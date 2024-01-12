@@ -1,0 +1,67 @@
+---
+import Link from "@components/Link.astro";
+import StarShape from "@components/StarShape.astro";
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout title="baptistejouin | about me." page="about">
+  <div class="row container">
+    <main>
+      <p>
+        I’m, a Designer and Creative Developer. Shaping digital up for brands
+        worldwide for over 9 years. Love solving gnarly UX problems and creating
+        things with a strong focus on aesthetics. Currently <span
+          class="underline">Lead Product Designer</span
+        > @Kryptex.
+      </p>
+
+      <div class="resume">
+        <Link href="/" isActive={false}>
+          <span>my résumé</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="33"
+            height="32"
+            viewBox="0 0 33 32"
+            fill="none"
+          >
+            <path
+              d="M17.5834 13.3333H24.25L16.25 21.3333L8.25002 13.3333H14.9167V4H17.5834V13.3333ZM5.58335 25.3333H26.9167V16H29.5834V26.6667C29.5834 27.0203 29.4429 27.3594 29.1928 27.6095C28.9428 27.8595 28.6036 28 28.25 28H4.25002C3.8964 28 3.55726 27.8595 3.30721 27.6095C3.05716 27.3594 2.91669 27.0203 2.91669 26.6667V16H5.58335V25.3333Z"
+            ></path>
+          </svg>
+        </Link>
+      </div>
+    </main>
+  </div>
+  <StarShape side="right" />
+
+  <style lang="scss">
+    @use "@lib/scss/variables" as v;
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 5rem;
+      grid-column: span v.$num-grid-columns;
+      min-height: 60vh;
+    }
+
+    .resume {
+      margin: 2.5rem 0;
+      span {
+        font-size: 1.75781rem;
+        font-family: v.$ff-jetbrains;
+      }
+      svg {
+        fill: v.$c-black;
+      }
+    }
+
+    p {
+      font-family: v.$ff-inter;
+      font-size: 2.8125rem;
+      color: v.$c-black;
+    }
+  </style>
+</Layout>

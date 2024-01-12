@@ -1,0 +1,114 @@
+---
+import "@lib/scss/utils/minireset.min.css";
+import "@lib/scss/utils/base.scss";
+import "@lib/scss/utils/fonts.scss";
+
+import Footer from "@components/Footer.astro";
+import Nav from "@components/Nav.astro";
+import StarShape from "@components/StarShape.astro";
+
+const { frontmatter } = Astro.props;
+
+const keywords = [...frontmatter.keywords.split(",")];
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={frontmatter.description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta name="generator" content={Astro.generator} />
+    <title>{frontmatter.title}</title>
+  </head>
+  <body>
+    <header>
+      <Nav currentPage={frontmatter.title} />
+    </header>
+    <div class="work">
+      <main class="row">
+        <h1 class="title"></h1>
+        <p class="keywords">
+          {keywords.map((item) => <span>*{item.trim()}</span>)}
+        </p>
+        <slot />
+      </main>
+    </div>
+    <Footer />
+    <StarShape side="left" />
+  </body>
+</html>
+
+<style lang="scss" is:global>
+  @use "@lib/scss/variables" as v;
+
+  .work {
+    a {
+      text-decoration: underline wavy;
+      text-decoration-thickness: 0.1rem;
+      text-decoration-skip-ink: none;
+      color: v.$c-accent;
+
+      &hover {
+      }
+    }
+    h1,
+    h2,
+    h3,
+    p {
+      grid-column: span v.$num-grid-columns;
+    }
+
+    .keywords {
+      grid-column: span v.$num-grid-columns;
+      font-family: v.$ff-jetbrains;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+
+      span {
+        color: v.$c-accent;
+        font-size: 1.25rem;
+      }
+    }
+
+    p:nth-child(3) {
+      // first big image
+      grid-column: span 9;
+    }
+
+    p {
+      font-size: 2rem;
+      grid-column: 3 / span v.$num-grid-columns - 2;
+      margin-bottom: 1.5rem;
+    }
+
+    img {
+      grid-column: span 2;
+      display: block;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: gray;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        inset: 0;
+        padding-top: 100%;
+        background-color: gray;
+      }
+    }
+  }
+</style>
+
+<script>
+  document.querySelector("h1").textContent = location.pathname;
+</script>

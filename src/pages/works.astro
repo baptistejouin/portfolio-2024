@@ -1,0 +1,91 @@
+---
+import Card from "@components/Card.astro";
+import StarShape from "@components/StarShape.astro";
+import Layout from "@layouts/Layout.astro";
+
+import animation3d from "@assets/animation-3d/01.png";
+---
+
+<Layout title="baptistejouin | my work." page="works">
+  <main class="row">
+    <h1>My Work</h1>
+    <div class="filter">
+      <button class="active" data-category="0">All</button>
+      <button data-category="1">Animation 3D</button>
+      <button data-category="2">Web</button>
+      <button data-category="3">Graphic Design</button>
+    </div>
+    <Card
+      to="/works/animation-3d"
+      category="1"
+      title="Animation 3D"
+      img={{ src: animation3d, alt: "" }}
+    />
+    <Card
+      to="/works/animation-3d"
+      category="1"
+      title="Animation 3D"
+      img={{ src: animation3d, alt: "" }}
+    />
+    <Card
+      to="/works/animation-3d"
+      category="3"
+      title="Animation 3D"
+      img={{ src: animation3d, alt: "" }}
+    />
+    <Card
+      to="/works/animation-3d"
+      category="3"
+      title="Animation 3D"
+      img={{ src: animation3d, alt: "" }}
+    />
+    <!-- <Card /> -->
+    <!-- <Card /> -->
+  </main>
+  <StarShape offsetY={200} scale={0.6} side="left" />
+</Layout>
+
+<style lang="scss">
+  @use "../lib/scss/variables" as v;
+
+  main {
+    min-height: 80vh;
+  }
+  .filter {
+    grid-column: span v.$num-grid-columns;
+    margin-bottom: 3.5rem;
+
+    button {
+      font-size: 1.5rem;
+      font-family: v.$ff-jetbrains;
+
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
+</style>
+
+<script>
+  const filters = document.querySelectorAll("div.filter button");
+  const cards = document.querySelectorAll("main > a");
+
+  filters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+      filters.forEach((filter) => filter.classList.remove("active"));
+      filter.classList.add("active");
+
+      const category = filter?.dataset.category;
+
+      cards.forEach((card) => {
+        if (category === "0") {
+          card.style.display = "block";
+        } else if (card?.dataset?.category !== category) {
+          card.style.display = "none";
+        } else {
+          card.style.display = "block";
+        }
+      });
+    });
+  });
+</script>

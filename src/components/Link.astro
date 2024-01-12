@@ -1,0 +1,51 @@
+---
+interface Props {
+  active: boolean;
+  disabled?: boolean;
+  href: string;
+}
+
+const { href, active, disabled = false } = Astro.props;
+---
+
+<a href={href} class:list={[{ active: active }, { disabled: disabled }]}>
+  <slot />
+</a>
+
+<style lang="scss">
+  @use "../lib/scss/variables" as v;
+
+  a {
+    width: fit-content;
+    display: inline-flex;
+    padding: 0.875rem 1.75rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1.125rem;
+    border-radius: 1rem;
+    border: 1px solid #000;
+    background: #fff;
+
+    &.active,
+    &:hover {
+      background: v.$c-accent;
+    }
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      &:hover {
+        background: #fff;
+      }
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll("a.disabled").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+    });
+  });
+</script>

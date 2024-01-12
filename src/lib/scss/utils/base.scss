@@ -1,0 +1,59 @@
+@use "@lib/scss/variables" as v;
+
+@import "@lib/scss/utils/animation.scss";
+
+html {
+  overflow-x: hidden;
+  font-family: system-ui, sans-serif;
+  font-size: v.$fs-base;
+  color: black;
+  background-color: v.$c-accent-background;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  min-height: 100vh;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+svg {
+  line-height: 0;
+  display: inline-flex;
+  vertical-align: middle;
+}
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+h1 {
+  font-size: 3.5rem;
+  margin-top: 5rem;
+  margin-bottom: 0rem;
+  font-family: v.$ff-inter;
+  color: v.$c-black;
+  grid-column: span v.$num-grid-columns;
+}
+.row {
+  margin: 0 auto;
+  max-width: 1366px;
+  gap: v.$grid-columns-gap;
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-template-columns: repeat(v.$num-grid-columns, 1fr);
+  padding: 0 v.$page-gutter;
+}
+.underline {
+  background-repeat: repeat-x;
+  background-image: url("/img/wave.svg");
+  background-position: 0 1.06em;
+  background-size: 179px 7px;
+  animation: wave 3s infinite linear;
+  animation-play-state: paused;
+  &:hover {
+    animation-play-state: running;
+  }
+}
