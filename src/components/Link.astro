@@ -1,11 +1,11 @@
 ---
 interface Props {
-  active: boolean;
+  active?: boolean;
   disabled?: boolean;
   href: string;
 }
 
-const { href, active, disabled = false } = Astro.props;
+const { href, active = false, disabled = false } = Astro.props;
 ---
 
 <a href={href} class:list={[{ active: active }, { disabled: disabled }]}>
@@ -29,6 +29,11 @@ const { href, active, disabled = false } = Astro.props;
     &.active,
     &:hover {
       background: v.$c-accent;
+    }
+
+    &.active {
+      border-width: 0px;
+      outline: 1.5px solid v.$c-black;
     }
 
     &.disabled {

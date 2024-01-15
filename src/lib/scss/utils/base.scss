@@ -1,4 +1,5 @@
 @use "@lib/scss/variables" as v;
+@use "@lib/scss/mixins" as m;
 
 @import "@lib/scss/utils/animation.scss";
 
@@ -13,6 +14,9 @@ html {
 }
 body {
   min-height: 100vh;
+}
+p {
+  cursor: default;
 }
 a {
   color: inherit;
@@ -36,6 +40,10 @@ h1 {
   font-family: v.$ff-inter;
   color: v.$c-black;
   grid-column: span v.$num-grid-columns;
+
+  @include m.before(xl) {
+    font-size: 3rem;
+  }
 }
 .row {
   margin: 0 auto;
@@ -45,14 +53,19 @@ h1 {
   grid-auto-rows: min-content;
   grid-template-columns: repeat(v.$num-grid-columns, 1fr);
   padding: 0 v.$page-gutter;
+
+  @include m.before(xl) {
+    padding: 0 2rem;
+  }
 }
 .underline {
   background-repeat: repeat-x;
   background-image: url("/img/wave.svg");
   background-position: 0 1.06em;
-  background-size: 179px 7px;
+  background-size: 3.451397em 0.138em;
   animation: wave 3s infinite linear;
   animation-play-state: paused;
+
   &:hover {
     animation-play-state: running;
   }

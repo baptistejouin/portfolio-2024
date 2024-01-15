@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+
 import "@lib/scss/utils/minireset.min.css";
 import "@lib/scss/utils/base.scss";
 import "@lib/scss/utils/fonts.scss";
@@ -22,6 +24,7 @@ const keywords = [...frontmatter.keywords.split(",")];
 
     <meta name="generator" content={Astro.generator} />
     <title>{frontmatter.title}</title>
+    <ViewTransitions />
   </head>
   <body>
     <header>
@@ -29,7 +32,7 @@ const keywords = [...frontmatter.keywords.split(",")];
     </header>
     <div class="work">
       <main class="row">
-        <h1 class="title"></h1>
+        <h1 class="title" transition:persist transition:name="h1-work"></h1>
         <p class="keywords">
           {keywords.map((item) => <span>*{item.trim()}</span>)}
         </p>
@@ -38,77 +41,86 @@ const keywords = [...frontmatter.keywords.split(",")];
     </div>
     <Footer />
     <StarShape side="left" />
+    <style lang="scss" is:global>
+      @use "@lib/scss/variables" as v;
+
+      .work {
+        a {
+          text-decoration: underline wavy;
+          text-decoration-thickness: 0.1rem;
+          text-decoration-skip-ink: none;
+          color: v.$c-accent;
+
+          &hover {
+          }
+        }
+        h1,
+        h2,
+        iframe,
+        h3,
+        p {
+          grid-column: span v.$num-grid-columns;
+        }
+
+        .keywords {
+          grid-column: span v.$num-grid-columns;
+          font-family: v.$ff-jetbrains;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          margin-bottom: 3.5rem;
+
+          span {
+            color: v.$c-accent;
+            font-size: 1.25rem;
+          }
+        }
+
+        p {
+          font-size: 2rem;
+          margin-bottom: 1.5rem;
+          grid-column: 2 / span v.$num-grid-columns - 2;
+          &:nth-child(3) {
+            // first big image
+            grid-column: span 9;
+          }
+          &:nth-child(4) {
+            // first paragraph
+            grid-column: 2 / span v.$num-grid-columns - 3 !important;
+            margin-bottom: 5rem;
+          }
+          &:nth-child(2n) {
+            grid-column: 1 / span v.$num-grid-columns - 3;
+          }
+        }
+
+        img {
+          display: block;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          background-color: gray;
+
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            inset: 0;
+            padding-top: 100%;
+            background-color: gray;
+          }
+        }
+      }
+    </style>
+
+    <script>
+      document.querySelector("h1").textContent = location.pathname;
+      document.addEventListener("astro:after-swap", () => {
+        document.querySelector("h1").textContent = location.pathname;
+      });
+    </script>
   </body>
 </html>
-
-<style lang="scss" is:global>
-  @use "@lib/scss/variables" as v;
-
-  .work {
-    a {
-      text-decoration: underline wavy;
-      text-decoration-thickness: 0.1rem;
-      text-decoration-skip-ink: none;
-      color: v.$c-accent;
-
-      &hover {
-      }
-    }
-    h1,
-    h2,
-    h3,
-    p {
-      grid-column: span v.$num-grid-columns;
-    }
-
-    .keywords {
-      grid-column: span v.$num-grid-columns;
-      font-family: v.$ff-jetbrains;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 3.5rem;
-
-      span {
-        color: v.$c-accent;
-        font-size: 1.25rem;
-      }
-    }
-
-    p:nth-child(3) {
-      // first big image
-      grid-column: span 9;
-    }
-
-    p {
-      font-size: 2rem;
-      grid-column: 3 / span v.$num-grid-columns - 2;
-      margin-bottom: 1.5rem;
-    }
-
-    img {
-      grid-column: span 2;
-      display: block;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      background-color: gray;
-
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        inset: 0;
-        padding-top: 100%;
-        background-color: gray;
-      }
-    }
-  }
-</style>
-
-<script>
-  document.querySelector("h1").textContent = location.pathname;
-</script>

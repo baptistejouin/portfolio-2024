@@ -22,13 +22,22 @@ const { to, img, title, category } = Astro.props;
 </a>
 
 <style lang="scss">
-  @use "../lib/scss/variables" as v;
+  @use "@lib/scss/variables" as v;
+  @use "@lib/scss/mixins" as m;
 
   a {
     position: relative;
     grid-column: span 4;
     aspect-ratio: 1;
     overflow: hidden;
+
+    @include m.before(md) {
+      grid-column: span 6;
+    }
+
+    @include m.before(sm) {
+      grid-column: span 12;
+    }
 
     &:hover {
       img {
@@ -56,6 +65,10 @@ const { to, img, title, category } = Astro.props;
     color: v.$c-white;
     font-family: v.$ff-inter;
     text-shadow: 0 0 1rem v.$c-black;
+
+    @include m.before(lg) {
+      font-size: 1.25rem;
+    }
   }
   img {
     transform: scale(1.01);

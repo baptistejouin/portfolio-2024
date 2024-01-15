@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+
 import "@lib/scss/utils/minireset.min.css";
 import "@lib/scss/utils/base.scss";
 import "@lib/scss/utils/fonts.scss";
@@ -24,6 +26,7 @@ const { title, page } = Astro.props;
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body>
     <header>

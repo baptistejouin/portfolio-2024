@@ -7,6 +7,7 @@ import Layout from "@layouts/Layout.astro";
 <Layout title="baptistejouin | about me." page="about">
   <div class="row container">
     <main>
+      <h1>/about</h1>
       <p>
         I’m, a Designer and Creative Developer. Shaping digital up for brands
         worldwide for over 9 years. Love solving gnarly UX problems and creating
@@ -16,7 +17,7 @@ import Layout from "@layouts/Layout.astro";
       </p>
 
       <div class="resume">
-        <Link href="/" isActive={false}>
+        <Link href="/">
           <span>my résumé</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -37,12 +38,18 @@ import Layout from "@layouts/Layout.astro";
 
   <style lang="scss">
     @use "@lib/scss/variables" as v;
+    @use "@lib/scss/mixins" as m;
 
+    h1 {
+      font-size: 3.5rem;
+      font-family: v.$ff-inter;
+      margin: 5rem 0 3.5rem 0;
+      width: 100%;
+    }
     main {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 5rem;
       grid-column: span v.$num-grid-columns;
       min-height: 60vh;
     }
@@ -52,6 +59,10 @@ import Layout from "@layouts/Layout.astro";
       span {
         font-size: 1.75781rem;
         font-family: v.$ff-jetbrains;
+
+        @include m.before(lg) {
+          font-size: 1.35rem;
+        }
       }
       svg {
         fill: v.$c-black;
@@ -62,6 +73,13 @@ import Layout from "@layouts/Layout.astro";
       font-family: v.$ff-inter;
       font-size: 2.8125rem;
       color: v.$c-black;
+
+      @include m.before(lg) {
+        font-size: 2.5rem;
+      }
+      @include m.before(md) {
+        font-size: 2rem;
+      }
     }
   </style>
 </Layout>
