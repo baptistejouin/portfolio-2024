@@ -10,12 +10,10 @@ import Nav from "@components/Nav.astro";
 import StarShape from "@components/StarShape.astro";
 
 const { frontmatter } = Astro.props;
-
-const keywords = [...frontmatter.keywords.split(",")];
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={frontmatter.description} />
@@ -32,17 +30,19 @@ const keywords = [...frontmatter.keywords.split(",")];
     </header>
     <div class="work">
       <main class="row">
-        <h1 class="title" transition:persist transition:name="h1-work"></h1>
+        <h1 class="title"></h1>
         <p class="keywords">
-          {keywords.map((item) => <span>*{item.trim()}</span>)}
+          {frontmatter.keywords.map((item) => <span>*{item}</span>)}
         </p>
         <slot />
       </main>
     </div>
     <Footer />
     <StarShape side="left" />
+
     <style lang="scss" is:global>
       @use "@lib/scss/variables" as v;
+      @use "@lib/scss/mixins" as m;
 
       .work {
         a {
@@ -54,16 +54,34 @@ const keywords = [...frontmatter.keywords.split(",")];
           &hover {
           }
         }
-        h1,
+
+        h1 {
+          grid-column: span v.$number-grid-columns;
+        }
+
         h2,
         iframe,
         h3,
-        p {
-          grid-column: span v.$num-grid-columns;
+        p,
+        ul,
+        ol,
+        div {
+          grid-column: 2 / span v.$number-grid-columns - 2;
+
+          @include m.before(md) {
+            grid-column: span v.$number-grid-columns;
+          }
+        }
+
+        h1,
+        h2,
+        h3 {
+          font-family: v.$ff-jetbrains;
+          font-weight: 700;
         }
 
         .keywords {
-          grid-column: span v.$num-grid-columns;
+          grid-column: span v.$number-grid-columns;
           font-family: v.$ff-jetbrains;
           display: flex;
           flex-wrap: wrap;
@@ -75,51 +93,76 @@ const keywords = [...frontmatter.keywords.split(",")];
             font-size: 1.25rem;
           }
         }
+        iframe {
+          width: 100%;
+          aspect-ratio: 16 / 9;
+        }
 
-        p {
-          font-size: 2rem;
+        h2 {
+          font-size: 3rem;
+
+          @include m.before(lg) {
+            font-size: 2.25rem;
+          }
+          @include m.before(md) {
+            font-size: 1.75rem;
+          }
+        }
+
+        p,
+        li {
+          font-size: 1.6rem;
           margin-bottom: 1.5rem;
-          grid-column: 2 / span v.$num-grid-columns - 2;
-          &:nth-child(3) {
-            // first big image
-            grid-column: span 9;
+          // grid-column: 2 / span v.$number-grid-column;
+
+          @include m.before(lg) {
+            font-size: 1.75em;
           }
-          &:nth-child(4) {
-            // first paragraph
-            grid-column: 2 / span v.$num-grid-columns - 3 !important;
-            margin-bottom: 5rem;
-          }
-          &:nth-child(2n) {
-            grid-column: 1 / span v.$num-grid-columns - 3;
+
+          @include m.before(md) {
+            font-size: 1.5rem;
           }
         }
 
         img {
-          display: block;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          width: 100%;
+          width: auto;
           height: 100%;
-          background-color: gray;
+          max-height: 50vh;
+          // object-fit: cover;
+        }
+        .img-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+          grid-auto-rows: min-content;
 
-          &::after {
-            content: "";
-            display: block;
-            position: absolute;
-            inset: 0;
-            padding-top: 100%;
-            background-color: gray;
+          gap: 1rem;
+          margin-bottom: 3.5rem;
+
+          p {
+            grid-column: span 1;
+            margin-bottom: 0;
+          }
+          img {
+            width: 100%;
+            object-fit: cover;
+            height: auto;
           }
         }
       }
     </style>
 
     <script>
-      document.querySelector("h1").textContent = location.pathname;
-      document.addEventListener("astro:after-swap", () => {
+      function init() {
         document.querySelector("h1").textContent = location.pathname;
+
+        const html = document.querySelector("html");
+        if (localStorage.getItem("theme") === "dark")
+          html.classList.add("dark");
+      }
+
+      init();
+      document.addEventListener("astro:after-swap", () => {
+        init();
       });
     </script>
   </body>

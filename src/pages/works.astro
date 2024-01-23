@@ -3,42 +3,29 @@ import Card from "@components/Card.astro";
 import StarShape from "@components/StarShape.astro";
 import Layout from "@layouts/Layout.astro";
 
-import animation3d from "@assets/animation-3d/01.png";
+const works = await Astro.glob("../pages/works/*.md");
 ---
 
 <Layout title="baptistejouin | my work." page="works">
   <main class="row">
-    <h1 transition:persist transition:name="h1-work">/works</h1>
+    <h1>/works</h1>
     <div class="filter">
       <button class="active" data-category="0">All</button>
-      <button data-category="1">Animation 3D</button>
-      <button data-category="2">Web</button>
-      <button data-category="3">Graphic Design</button>
+      <button data-category="3d">3D</button>
+      <button data-category="web">Web</button>
+      <button data-category="design">Graphic Design</button>
     </div>
-    <Card
-      to="/works/animation-3d"
-      category="1"
-      title="Animation 3D"
-      img={{ src: animation3d, alt: "" }}
-    />
-    <Card
-      to="/works/animation-3d"
-      category="1"
-      title="Animation 3D"
-      img={{ src: animation3d, alt: "" }}
-    />
-    <Card
-      to="/works/animation-3d"
-      category="3"
-      title="Animation 3D"
-      img={{ src: animation3d, alt: "" }}
-    />
-    <Card
-      to="/works/animation-3d"
-      category="3"
-      title="Animation 3D"
-      img={{ src: animation3d, alt: "" }}
-    />
+
+    {
+      works.map((work) => (
+        <Card
+          to={work.url}
+          category={work.frontmatter.category}
+          title={work.frontmatter.title}
+          img={work.frontmatter.thumbnail}
+        />
+      ))
+    }
     <p class="empty hidden">There is no work for this category. :(</p>
   </main>
   <StarShape offsetY={200} scale={0.6} side="left" />
@@ -52,10 +39,16 @@ import animation3d from "@assets/animation-3d/01.png";
     min-height: 80vh;
   }
   .filter {
-    grid-column: span v.$num-grid-columns;
+    grid-column: span v.$number-grid-columns;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
     margin-bottom: 3.5rem;
 
     button {
+      color: v.$c-black;
       font-size: 1.5rem;
       font-family: v.$ff-jetbrains;
 
@@ -69,7 +62,7 @@ import animation3d from "@assets/animation-3d/01.png";
     }
   }
   .empty {
-    grid-column: span v.$num-grid-columns;
+    grid-column: span v.$number-grid-columns;
     text-align: center;
     font-size: 1.25rem;
     font-family: v.$ff-jetbrains;

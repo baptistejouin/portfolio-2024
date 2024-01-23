@@ -10,12 +10,24 @@ const { currentPage } = Astro.props;
 
 <header class="row">
   <nav>
-    <div class="links">
+    <button class="links mobile">Menu</button>
+    <div class="nav mobile">
+      <div>
+        <a href="/works" class:list={{ active: currentPage === "works" }}
+          >Works</a
+        >
+        <a href="/about" class:list={{ active: currentPage === "about" }}
+          >About</a
+        >
+        <a href="/labs" class:list={{ active: currentPage === "labs" }}>Labs</a>
+      </div>
+    </div>
+    <div class="links desktop">
       <Link href="/works" active={currentPage === "works"}>Works</Link>
       <Link href="/about" active={currentPage === "about"}>About</Link>
       <Link href="/labs" active={currentPage === "labs"} disabled>Labs</Link>
     </div>
-    <div class="links">
+    <div class="icons">
       <a href="https://www.linkedin.com/in/baptistejouin/" target="_blank">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -29,25 +41,33 @@ const { currentPage } = Astro.props;
           ></path>
         </svg></a
       >
-      <button>
+      <button class="moon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"
           height="32"
-          viewBox="0 0 32 32"
           fill="none"
+          ><g clip-path="url(#a)"
+            ><path
+              d="M13.333 8a10.666 10.666 0 0 0 15.94 9.275C28.632 24.04 22.933 29.333 16 29.333 8.636 29.333 2.667 23.364 2.667 16c0-6.933 5.293-12.632 12.058-13.273A10.617 10.617 0 0 0 13.333 8Zm-8 8a10.667 10.667 0 0 0 16.032 9.22 10.674 10.674 0 0 0 3.911-3.947c-.421.04-.848.06-1.276.06-7.364 0-13.333-5.969-13.333-13.333 0-.428.02-.853.06-1.276A10.675 10.675 0 0 0 5.333 16ZM24.22 3.055l1.114.278v1.334l-1.114.278a2.667 2.667 0 0 0-1.94 1.94L22 8h-1.333l-.279-1.115a2.665 2.665 0 0 0-1.94-1.94l-1.115-.278V3.333l1.115-.278a2.667 2.667 0 0 0 1.939-1.94L20.667 0H22l.279 1.115a2.666 2.666 0 0 0 1.94 1.94Zm6.666 6.666L32 10v1.333l-1.115.279a2.667 2.667 0 0 0-1.94 1.94l-.278 1.115h-1.334l-.278-1.115a2.667 2.667 0 0 0-1.94-1.94L24 11.333V10l1.115-.279a2.667 2.667 0 0 0 1.94-1.94l.278-1.114h1.334l.278 1.114a2.666 2.666 0 0 0 1.94 1.94Z"
+            ></path></g
+          ><defs
+            ><clipPath id="a"
+              ><path fill="#fff" d="M0 0h32v32H0z"></path></clipPath
+            ></defs
+          ></svg
         >
-          <g clip-path="url(#clip0_1_23)">
-            <path
-              d="M13.3334 8C13.3329 9.86676 13.8223 11.7009 14.7528 13.3193C15.6832 14.9376 17.0221 16.2835 18.6356 17.2223C20.2491 18.1611 22.0808 18.66 23.9475 18.6692C25.8142 18.6784 27.6507 18.1975 29.2734 17.2747C28.632 24.04 22.9334 29.3333 16 29.3333C8.63602 29.3333 2.66669 23.364 2.66669 16C2.66669 9.06667 7.96002 3.368 14.7254 2.72667C13.8101 4.33325 13.3303 6.151 13.3334 8ZM5.33335 16C5.33335 18.829 6.45716 21.5421 8.45755 23.5425C10.4579 25.5429 13.171 26.6667 16 26.6667C17.8847 26.6666 19.7357 26.1675 21.3649 25.2202C22.9942 24.2729 24.3436 22.9111 25.276 21.2733C24.8547 21.3133 24.428 21.3333 24 21.3333C16.636 21.3333 10.6667 15.364 10.6667 8C10.6667 7.572 10.6867 7.14667 10.7267 6.724C9.08888 7.65643 7.72712 9.00585 6.77983 10.6351C5.83253 12.2644 5.33347 14.1154 5.33335 16ZM24.2187 3.05467L25.3334 3.33333V4.66667L24.2187 4.94533C23.7499 5.06258 23.3218 5.305 22.9801 5.64671C22.6384 5.98841 22.3959 6.41653 22.2787 6.88533L22 8H20.6667L20.388 6.88533C20.2708 6.41653 20.0284 5.98841 19.6866 5.64671C19.3449 5.305 18.9168 5.06258 18.448 4.94533L17.3334 4.66667V3.33333L18.448 3.05467C18.9166 2.93721 19.3444 2.69469 19.6859 2.353C20.0273 2.01132 20.2696 1.5833 20.3867 1.11467L20.6667 0H22L22.2787 1.11467C22.3959 1.58347 22.6384 2.01159 22.9801 2.3533C23.3218 2.695 23.7499 2.93742 24.2187 3.05467ZM30.8854 9.72133L32 10V11.3333L30.8854 11.612C30.4166 11.7292 29.9884 11.9717 29.6467 12.3134C29.305 12.6551 29.0626 13.0832 28.9454 13.552L28.6667 14.6667H27.3334L27.0547 13.552C26.9374 13.0832 26.695 12.6551 26.3533 12.3134C26.0116 11.9717 25.5835 11.7292 25.1147 11.612L24 11.3333V10L25.1147 9.72133C25.5835 9.60409 26.0116 9.36166 26.3533 9.01996C26.695 8.67826 26.9374 8.25013 27.0547 7.78133L27.3334 6.66667H28.6667L28.9454 7.78133C29.0626 8.25013 29.305 8.67826 29.6467 9.01996C29.9884 9.36166 30.4166 9.60409 30.8854 9.72133Z"
-            ></path>
-          </g>
-          <defs>
-            <clipPath id="clip0_1_23">
-              <rect width="32" height="32" fill="white"></rect>
-            </clipPath>
-          </defs>
-        </svg>
+      </button>
+      <button class="sun">
+        <svg
+          width="32"
+          height="32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="M16 24a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm0-2.667a5.333 5.333 0 1 0 0-10.667 5.333 5.333 0 0 0 0 10.667Zm-1.333-20h2.666v4h-2.666v-4Zm0 25.334h2.666v4h-2.666v-4ZM4.687 6.572l1.885-1.885L9.4 7.515 7.515 9.4 4.687 6.572ZM22.6 24.485l1.885-1.885 2.828 2.828-1.885 1.885-2.828-2.828Zm2.828-19.8 1.885 1.887L24.485 9.4 22.6 7.515l2.828-2.828v-.002ZM7.515 22.6 9.4 24.485l-2.828 2.828-1.885-1.885L7.515 22.6Zm23.152-7.933v2.666h-4v-2.666h4Zm-25.334 0v2.666h-4v-2.666h4Z"
+          ></path></svg
+        >
       </button>
     </div>
   </nav>
@@ -55,25 +75,171 @@ const { currentPage } = Astro.props;
 
 <style lang="scss">
   @use "../lib/scss/variables" as v;
+  @use "../lib/scss/mixins" as m;
 
   header {
     padding-top: 3.5rem;
   }
   nav {
+    font-size: 1.125rem;
     font-family: v.$ff-jetbrains;
-    grid-column: 2 / span v.$num-grid-columns - 2;
+    grid-column: 2 / span v.$number-grid-columns - 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include m.before(sm) {
+      grid-column: 1 / span v.$number-grid-columns;
+    }
   }
   .links {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 1.5rem;
+
+    &.desktop {
+      display: inline-flex;
+
+      @include m.before(md) {
+        display: none;
+      }
+    }
+
+    &.mobile {
+      display: none;
+
+      @include m.before(md) {
+        display: inline-flex;
+      }
+    }
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
   svg {
     aspect-ratio: 1;
     height: 2rem;
     fill: v.$c-accent;
   }
+  button.links {
+    font-family: inherit;
+    font-size: inherit;
+    width: fit-content;
+    display: inline-flex;
+    padding: 0.875rem 1.75rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1.125rem;
+    border-radius: 1rem;
+    color: v.$c-black;
+    border: 1px solid v.$c-black;
+    background: v.$c-white;
+
+    &:hover {
+      background: v.$c-accent;
+    }
+  }
+  .nav.mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(8px);
+    z-index: 1;
+    background: rgba(v.$c-black, 0.5);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    gap: 1.5rem;
+    padding: 0 2rem;
+
+    div {
+      margin-top: -20vh;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    a {
+      font-size: 3rem;
+      color: v.$c-black;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: v.$ff-jetbrains;
+      font-weight: 700;
+      letter-spacing: 0.1rem;
+      transition: color 0.2s ease-in-out;
+
+      &:hover {
+        color: v.$c-accent;
+      }
+    }
+
+    @include m.before(md) {
+      &.active {
+        display: flex;
+      }
+    }
+  }
+  .sun,
+  :global(html.dark) .moon {
+    display: block;
+  }
+
+  :global(html.dark) .sun,
+  .moon {
+    display: none;
+  }
 </style>
+
+<script>
+  function initMobileNav() {
+    const links = document.querySelector(".links.mobile");
+    const nav = document.querySelector(".nav.mobile");
+    const html = document.querySelector("html");
+
+    links.addEventListener("click", () => {
+      nav.classList.toggle("active");
+      html.classList.add("no-scroll");
+
+      addEventListener("resize", () => {
+        html.classList.remove("no-scroll");
+        nav.classList.remove("active");
+      });
+    });
+
+    nav.addEventListener("click", () => {
+      html.classList.remove("no-scroll");
+      nav.classList.remove("active");
+    });
+  }
+
+  function inittoggleTheme() {
+    const moon = document.querySelector("nav button.moon");
+    const sun = document.querySelector("nav button.sun");
+    const html = document.querySelector("html");
+
+    moon.addEventListener("click", () => {
+      html.classList.remove("dark");
+      localStorage.removeItem("theme");
+    });
+
+    sun.addEventListener("click", () => {
+      html.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    });
+  }
+
+  initMobileNav();
+  inittoggleTheme();
+
+  document.addEventListener("astro:after-swap", () => {
+    inittoggleTheme();
+    initMobileNav();
+  });
+</script>

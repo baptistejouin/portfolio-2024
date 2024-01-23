@@ -9,27 +9,26 @@ import Layout from "@layouts/Layout.astro";
     <main>
       <h1>/about</h1>
       <p>
-        I’m, a Designer and Creative Developer. Shaping digital up for brands
-        worldwide for over 9 years. Love solving gnarly UX problems and creating
-        things with a strong focus on aesthetics. Currently <span
-          class="underline">Lead Product Designer</span
-        > @Kryptex.
+        I am currently a student in Paris at <span class="underline"
+          ><a href="https://www.ingenieur-imac.fr">IMAC</a></span
+        >, an engineering school focused on careers in <span class="underline"
+          ><a href="/works">image, sound, and programming</a></span
+        >. I am passionate about the web, art, design, and UX/UI. I am also a
+        big fan of music and cinema.
       </p>
 
       <div class="resume">
-        <Link href="/">
+        <Link href="/" download>
           <span>my résumé</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="33"
             height="32"
-            viewBox="0 0 33 32"
             fill="none"
+            ><path
+              d="M17.583 13.333h6.667l-8 8-8-8h6.667V4h2.666v9.333Zm-12 12h21.334V16h2.666v10.667A1.333 1.333 0 0 1 28.25 28h-24a1.334 1.334 0 0 1-1.333-1.333V16h2.666v9.333Z"
+            ></path></svg
           >
-            <path
-              d="M17.5834 13.3333H24.25L16.25 21.3333L8.25002 13.3333H14.9167V4H17.5834V13.3333ZM5.58335 25.3333H26.9167V16H29.5834V26.6667C29.5834 27.0203 29.4429 27.3594 29.1928 27.6095C28.9428 27.8595 28.6036 28 28.25 28H4.25002C3.8964 28 3.55726 27.8595 3.30721 27.6095C3.05716 27.3594 2.91669 27.0203 2.91669 26.6667V16H5.58335V25.3333Z"
-            ></path>
-          </svg>
         </Link>
       </div>
     </main>
@@ -50,7 +49,7 @@ import Layout from "@layouts/Layout.astro";
       display: flex;
       flex-direction: column;
       align-items: center;
-      grid-column: span v.$num-grid-columns;
+      grid-column: span v.$number-grid-columns;
       min-height: 60vh;
     }
 

@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 
 interface Astro {
   props: {
@@ -18,7 +18,15 @@ const { to, img, title, category } = Astro.props;
 
 <a href={to} data-category={category}>
   <h2>{title}</h2>
-  <Image src={img.src} alt={img.alt} />
+  <Picture
+    src={img.src}
+    alt={img.alt ?? `an image`}
+    formats={["avif", "webp"]}
+    width={800}
+    height={800}
+    widths={[200, 400, 800]}
+    sizes="(max-width: 800px) 100vw, 800px"
+  />
 </a>
 
 <style lang="scss">
@@ -26,6 +34,7 @@ const { to, img, title, category } = Astro.props;
   @use "@lib/scss/mixins" as m;
 
   a {
+    border-radius: 5px;
     position: relative;
     grid-column: span 4;
     aspect-ratio: 1;
@@ -62,9 +71,9 @@ const { to, img, title, category } = Astro.props;
     font-size: 2rem;
     text-align: center;
     transform: translate(-50%, -50%);
-    color: v.$c-white;
+    color: #fff;
     font-family: v.$ff-inter;
-    text-shadow: 0 0 1rem v.$c-black;
+    text-shadow: 0 0 1rem #000;
 
     @include m.before(lg) {
       font-size: 1.25rem;

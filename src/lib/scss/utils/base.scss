@@ -4,13 +4,26 @@
 @import "@lib/scss/utils/animation.scss";
 
 html {
-  overflow-x: hidden;
+  --grid-columns-gap: 16px;
+  --page-gutter: 85px;
+  --accent-color: #aaa0f8;
+  --accent-background-color: #f8f8ff;
+  --dark: #000;
+  --light: #fff;
+
+  // overflow-x: hidden;
   font-family: system-ui, sans-serif;
   font-size: v.$fs-base;
-  color: black;
+  color: v.$c-black;
   background-color: v.$c-accent-background;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  &.dark {
+    --dark: #fff;
+    --light: #000;
+    --accent-background-color: #181723;
+  }
 }
 body {
   min-height: 100vh;
@@ -39,11 +52,16 @@ h1 {
   margin-bottom: 0rem;
   font-family: v.$ff-inter;
   color: v.$c-black;
-  grid-column: span v.$num-grid-columns;
+  grid-column: span v.$number-grid-columns;
 
   @include m.before(xl) {
     font-size: 3rem;
   }
+}
+img,
+video,
+iframe {
+  border-radius: 5px;
 }
 .row {
   margin: 0 auto;
@@ -51,7 +69,7 @@ h1 {
   gap: v.$grid-columns-gap;
   display: grid;
   grid-auto-rows: min-content;
-  grid-template-columns: repeat(v.$num-grid-columns, 1fr);
+  grid-template-columns: repeat(v.$number-grid-columns, 1fr);
   padding: 0 v.$page-gutter;
 
   @include m.before(xl) {
@@ -62,11 +80,18 @@ h1 {
   background-repeat: repeat-x;
   background-image: url("/img/wave.svg");
   background-position: 0 1.06em;
-  background-size: 3.451397em 0.138em;
+  background-size: 3.351397em 0.138em;
   animation: wave 3s infinite linear;
   animation-play-state: paused;
 
   &:hover {
     animation-play-state: running;
+  }
+}
+.no-scroll {
+  overflow: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }

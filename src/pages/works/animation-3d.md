@@ -1,22 +1,36 @@
 ---
-layout: ../../layouts/WorkLayout.astro
-title: Projet 3D
-keywords: 3D, Blender, animation
+title: 3D IMAC
 description: Projet 3D du semestre 3 de l'IMAC, réalisé avec Blender, création d'une animation de 4 secondes.
+category: 3d
+keywords: [3D, Blender, animation]
+thumbnail:
+  src: /img/works/animation-3d/featured.png
+  alt: Image issue du projet 3D du semestre 3 de l'IMAC
+layout: ../../layouts/WorkLayout.astro
 ---
 
+En quatrième semestre de l'IMAC, nous avons eu un cours d'animation 3D. Nous avons utilisé le logiciel Blender pour réaliser une animation de 4 secondes. Nous devions imaginer, modéliaser et animer une scène, le thème de cette année était "La dualité".
+
+J'ai choisi de représenté une place de village dans une ambiance méditerranéenne.
+
+<div class="img-grid">
+
+![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/animation-3D/02.png)
+
+![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/animation-3D/03.png)
+
 ![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/animation-3D/01.png)
 
-I’m, a Designer and Creative Developer. Shaping digital up for brands worldwide for over 9 years. Love solving gnarly UX problems and creating things with a [strong focus on](www.google.fr) aesthetics. Currently Lead Product Designer @Kryptex.
+![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/animation-3D/04.png)
 
-lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl sed cursus blandit, nulla ante maximus nisl, vitae luctus nisl nunc eu nunc. Null auctor, nisl sed cursus blandit, nulla ante maximus nisl, vitae luctus nisl nunc eu nunc. Null auctor, nisl sed cursus blandit, nulla ante maximus nisl, vitae luctus nisl nunc eu nunc. Null auctor, nisl sed cursus blandit, nulla ante maximus nisl, vitae luctus nisl nunc eu nunc. Null auctor, nisl sed cursus blandit.
+</div>
 
-![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/animation-3D/01.png)
+Voici la vidéo finale de tous les projets :
 
-Null auctor, nisl sed cursus blandit, nulla ante maximus nisl, vitae luctus nisl nunc eu nunc. Null auctor, nisl sed cursus blandit.
-
-![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/animation-3D/01.png)
-
-Null auctor, nisl sed cursus blandit, nulla ante maximus nisl, vitae luctus nisl nunc eu nunc. Null auctor, nisl sed cursus blandit.
-
-<iframe width="966" height="543" src="https://www.youtube.com/embed/yci475Vwc10" title="Music that makes u more inspired to study &amp; work 🌿 Study music ~ lofi / relax/ stress relief" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe
+  src="https://www.youtube.com/embed/9QyrhAM1LBw?si=5huVG0d0IlP0mqe9"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+></iframe>

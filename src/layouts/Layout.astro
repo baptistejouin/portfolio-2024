@@ -17,7 +17,7 @@ const { title, page } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Baptiste Jouin | Ingénieur créatif" />
@@ -29,10 +29,19 @@ const { title, page } = Astro.props;
     <ViewTransitions />
   </head>
   <body>
-    <header>
-      <Nav currentPage={page} />
-    </header>
+    <Nav currentPage={page} />
     <slot />
     <Footer />
+    <script>
+      function init() {
+        const html = document.querySelector("html");
+        if (localStorage.getItem("theme") === "dark")
+          html.classList.add("dark");
+      }
+      init();
+      document.addEventListener("astro:after-swap", () => {
+        init();
+      });
+    </script>
   </body>
 </html>

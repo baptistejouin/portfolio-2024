@@ -10,15 +10,15 @@ $fs-base: 16px;
 $ff-inter: "Inter", sans-serif;
 $ff-jetbrains: "JetBrains Mono", monospace;
 
-$c-black: #000;
-$c-white: #fff;
+$c-black: var(--dark);
+$c-white: var(--light);
 
-$c-accent: #aaa0f8;
-$c-accent-background: #f8f8ff;
+$c-accent: var(--accent-color);
+$c-accent-background: var(--accent-background-color);
 // $c-accent-dark: #c43e00;
 // $c-accent-light: #ffa040;
 // $c-accent-gradient: linear-gradient(to right, $c-accent, $c-accent-light);
 
-$grid-columns-gap: 16px;
-$page-gutter: 85px;
-$num-grid-columns: 12;
+$grid-columns-gap: var(--grid-columns-gap);
+$page-gutter: var(--page-gutter);
+$number-grid-columns: 12;

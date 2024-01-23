@@ -3,19 +3,38 @@ interface Props {
   active?: boolean;
   disabled?: boolean;
   href: string;
+  download?: boolean;
 }
 
-const { href, active = false, disabled = false } = Astro.props;
+const {
+  href,
+  active = false,
+  disabled = false,
+  download = false,
+} = Astro.props;
 ---
 
-<a href={href} class:list={[{ active: active }, { disabled: disabled }]}>
-  <slot />
-</a>
+{
+  download ? (
+    <a
+      href={href}
+      download
+      class:list={[{ active: active }, { disabled: disabled }]}
+    >
+      <slot />
+    </a>
+  ) : (
+    <a href={href} class:list={[{ active: active }, { disabled: disabled }]}>
+      <slot />
+    </a>
+  )
+}
 
 <style lang="scss">
   @use "../lib/scss/variables" as v;
 
   a {
+    box-sizing: border-box;
     width: fit-content;
     display: inline-flex;
     padding: 0.875rem 1.75rem;
@@ -23,8 +42,8 @@ const { href, active = false, disabled = false } = Astro.props;
     align-items: center;
     gap: 1.125rem;
     border-radius: 1rem;
-    border: 1px solid #000;
-    background: #fff;
+    border: 2px solid v.$c-black;
+    background: v.$c-white;
 
     &.active,
     &:hover {
@@ -32,8 +51,8 @@ const { href, active = false, disabled = false } = Astro.props;
     }
 
     &.active {
-      border-width: 0px;
-      outline: 1.5px solid v.$c-black;
+      outline: 3px dashed v.$c-black;
+      outline-offset: 2px;
     }
 
     &.disabled {
