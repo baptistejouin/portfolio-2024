@@ -21,7 +21,7 @@ const { frontmatter } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <meta name="generator" content={Astro.generator} />
-    <title>{frontmatter.title}</title>
+    <title>baptistejouin | {`${frontmatter.title}.`}</title>
     <ViewTransitions />
   </head>
   <body>
@@ -30,7 +30,7 @@ const { frontmatter } = Astro.props;
     </header>
     <div class="work">
       <main class="row">
-        <h1 class="title"></h1>
+        <h1 class="title">{frontmatter.url}</h1>
         <p class="keywords">
           {frontmatter.keywords.map((item) => <span>*{item}</span>)}
         </p>
@@ -60,6 +60,7 @@ const { frontmatter } = Astro.props;
         }
 
         h2,
+        pre,
         iframe,
         h3,
         p,
@@ -151,18 +152,12 @@ const { frontmatter } = Astro.props;
       }
     </style>
 
-    <script>
-      function init() {
-        document.querySelector("h1").textContent = location.pathname;
+    <script lang="ts">
+      import { setup } from "@services/prefersColorScheme";
 
-        const html = document.querySelector("html");
-        if (localStorage.getItem("theme") === "dark")
-          html.classList.add("dark");
-      }
-
-      init();
+      setup();
       document.addEventListener("astro:after-swap", () => {
-        init();
+        setup();
       });
     </script>
   </body>

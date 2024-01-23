@@ -19,12 +19,17 @@ const {
     <a
       href={href}
       download
+      class="link"
       class:list={[{ active: active }, { disabled: disabled }]}
     >
       <slot />
     </a>
   ) : (
-    <a href={href} class:list={[{ active: active }, { disabled: disabled }]}>
+    <a
+      href={href}
+      class="link"
+      class:list={[{ active: active }, { disabled: disabled }]}
+    >
       <slot />
     </a>
   )
@@ -33,7 +38,7 @@ const {
 <style lang="scss">
   @use "../lib/scss/variables" as v;
 
-  a {
+  .link {
     box-sizing: border-box;
     width: fit-content;
     display: inline-flex;
@@ -65,11 +70,3 @@ const {
     }
   }
 </style>
-
-<script>
-  document.querySelectorAll("a.disabled").forEach((el) => {
-    el.addEventListener("click", (e) => {
-      e.preventDefault();
-    });
-  });
-</script>

@@ -35,6 +35,9 @@ const works = await Astro.glob("../pages/works/*.md");
   @use "../lib/scss/variables" as v;
   @use "../lib/scss/mixins" as m;
 
+  h1 {
+    font-family: v.$ff-jetbrains;
+  }
   main {
     min-height: 80vh;
   }
