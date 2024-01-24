@@ -4,12 +4,16 @@ description: Création d'un outil pour exporter les photos de l'application Bere
 category: dev
 keywords: [Python, Pillow, API]
 thumbnail:
-  src: /img/labs/bereal-export/featured.jpg
+  src: /img/labs/bereal-export/featured.png
   alt: Rendu d'un export fait avec BeReal Export
 layout: ../../layouts/Article.astro
 ---
 
-BeReal export est outil que j'ai developpé durant sur mes pauses pendant l'été 2023.
+![Rendu d'un export fait avec BeReal Export](../../assets/labs/bereal-export/02.png)
+
+- [Le projet Github](https://github.com/baptistejouin/bereal-export)
+
+BeReal export est outil que j'ai développé durant sur mes pauses pendant l'été 2023.
 
 BeReal est une application qui propose à ses utilisateurs de prendre deux photos en simultané par jours (une avec la camera avant et une avec la camera arrière). Ces photos sont ensuite partagées avec nos amis.
 
@@ -19,10 +23,8 @@ A noté que chaque photo est associée à une autre (photo prise au même instan
 
 Il m'a donc fallu télécharger les photos à partir de leurs URL, les redimensionner et les placer dans une présentation identique à celle de l'application. Pour cela j'ai utilisé la librairie Pillow.
 
+![Rendu d'un export fait avec BeReal Export](../../assets/labs/bereal-export/01.png)
+
 Je souhaitais par la suite les imprimer et les mettre dans un album photo, donc respecter le format (10cm x 15cm). Je souhaitais également qu'un papier photo contienne 2 BeReal, donc 4 photos.
 
 J'ai également récupéré certaines de mes données depuis l'API privée de BeReal.
-
-- [Le projet Github](https://github.com/baptistejouin/bereal-export)
-
-![Rendu d'un export fait avec BeReal Export](../../assets/labs/bereal-export/01.png)
