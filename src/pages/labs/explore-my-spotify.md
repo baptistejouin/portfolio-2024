@@ -1,6 +1,6 @@
 ---
 title: My Spotify
-description:
+description: Application web connectée à l'API Spotify
 category: dev
 keywords: [TypeSript, Svelte, Spotify, API]
 thumbnail:
