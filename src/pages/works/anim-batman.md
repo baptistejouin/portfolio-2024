@@ -9,13 +9,7 @@ thumbnail:
 layout: ../../layouts/Article.astro
 ---
 
-<div class="img-grid">
-
 ![Page d'accueil du site](../../assets/works/anim-batman/03.jpg)
-
-![Page d'accueil du site](../../assets/works/anim-batman/04.jpg)
-
-</div>
 
 Batman 2D est un projet réalisé lors de ma première année à l'IMAC. Nous devions, par groupe, créer une animation 2D avec After Effects. Nous avons choisi de réaliser une animation sur le thème de Batman.
 

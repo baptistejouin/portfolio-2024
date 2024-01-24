@@ -13,6 +13,8 @@ layout: ../../layouts/Article.astro
 
 Ce projet est issue d'un besoin personnel. Je souhaitais pouvoir synchroniser mon calendrier Notion avec mon calendrier Google. Des solutions similaires existent déjà, mais sont payantes ou limitées face à mon besoin. J'ai donc décidé de développer ma propre solution.
 
+[Voici le lien vers le projet](https://github.com/baptistejouin/cron-notion-ics)
+
 Le principe est simple, j'ai développé un script Python qui récupère les données de mon calendrier Notion via API, puis qui génère un fichier ICS. Ce fichier est ensuite envoyé sur un serveur web, et est accessible publiquement. Il ne reste plus qu'à ajouter le lien du fichier ICS dans Google Agenda.
 
 ![Partie du code en python du script](../../assets/labs/cron-notion-ics/01.png)

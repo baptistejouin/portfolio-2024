@@ -9,13 +9,13 @@ thumbnail:
 layout: ../../layouts/Article.astro
 ---
 
-L’habibliothèque est un projet universitaire. Nous devions concevoir un logo ainsi qu’une maquette d’un magasin fictif.
-
-<div class="img-grid">
-
 ![Page d'accueil du site](../../assets/works/l-habibliotheque/01.jpg)
 
+L’habibliothèque est un projet universitaire. Nous devions concevoir un logo ainsi qu’une maquette d’un magasin fictif.
+
 ![Page d'accueil du site](../../assets/works/l-habibliotheque/02.jpg)
+
+<div class="img-grid">
 
 ![Page d'accueil du site](../../assets/works/l-habibliotheque/03.jpg)
 
@@ -25,10 +25,6 @@ L’habibliothèque est un projet universitaire. Nous devions concevoir un logo 
 
 Ce travail a été réalisé en plusieurs étapes : tout d’abord une phase de recherche, comment traduire le concept graphiquement. Puis la réalisation de prototypes, à partir des différentes idées, et enfin des tests utilisateurs.
 
-<div class="img-grid">
-
 ![Page d'accueil du site](../../assets/works/l-habibliotheque/05.jpg)
 
 ![Page d'accueil du site](../../assets/works/l-habibliotheque/06.jpg)
-
-</div>
