@@ -6,7 +6,7 @@ keywords: [Python, Pillow, API]
 thumbnail:
   src: /img/labs/bereal-export/featured.jpg
   alt: Rendu d'un export fait avec BeReal Export
-layout: ../../layouts/WorkLayout.astro
+layout: ../../layouts/Article.astro
 ---
 
 BeReal export est outil que j'ai developpé durant sur mes pauses pendant l'été 2023.

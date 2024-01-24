@@ -6,7 +6,7 @@ keywords: [UI, UX, Web Design, Figma]
 thumbnail:
   src: /img/works/l-habibliotheque/featured.jpg
   alt: Image de la page d'accueil du site
-layout: ../../layouts/WorkLayout.astro
+layout: ../../layouts/Article.astro
 ---
 
 L’habibliothèque est un projet universitaire. Nous devions concevoir un logo ainsi qu’une maquette d’un magasin fictif.

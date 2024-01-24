@@ -6,7 +6,7 @@ keywords: [After Effects, 2D, Figma]
 thumbnail:
   src: /img/works/anim-batman/featured.jpg
   alt: Image extraite de l'animation 2D
-layout: ../../layouts/WorkLayout.astro
+layout: ../../layouts/Article.astro
 ---
 
 <div class="img-grid">

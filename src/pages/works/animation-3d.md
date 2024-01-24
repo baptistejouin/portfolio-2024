@@ -6,7 +6,7 @@ keywords: [3D, Blender, animation]
 thumbnail:
   src: /img/works/animation-3d/featured.png
   alt: Image issue du projet 3D du semestre 3 de l'IMAC
-layout: ../../layouts/WorkLayout.astro
+layout: ../../layouts/Article.astro
 ---
 
 En quatrième semestre de l'IMAC, nous avons eu un cours d'animation 3D. Nous avons utilisé le logiciel Blender pour réaliser une animation de 4 secondes. Nous devions imaginer, modéliaser et animer une scène, le thème de cette année était "La dualité".

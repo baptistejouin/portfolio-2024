@@ -6,7 +6,7 @@ keywords: [VueJS, JavaSript, Figma, Github]
 thumbnail:
   src: /img/works/apc-web/featured.jpg
   alt: Page d'accueil du site
-layout: ../../layouts/WorkLayout.astro
+layout: ../../layouts/Article.astro
 ---
 
 Afin de mettre en pratique mes connaissances en VueJS, j'ai décidé de créer un site ecommerce fictif. J'ai choisi de créer un site pour la marque de vêtements APC, car j'aime beaucoup leur univers et leur site actuel est assez minimaliste, ce qui est parfait pour un premier projet.

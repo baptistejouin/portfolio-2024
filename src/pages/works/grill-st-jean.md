@@ -6,7 +6,7 @@ keywords: [PHP, HTML5, SASS Figma]
 thumbnail:
   src: /img/works/grill-st-jean/featured.png
   alt: Image issue de la maquette du site du grill saint jean à Troyes
-layout: ../../layouts/WorkLayout.astro
+layout: ../../layouts/Article.astro
 ---
 
 En tant que freelance j'ai réalisé avec un ami un site pour un restaurant à Troyes, le Grill St Jean.

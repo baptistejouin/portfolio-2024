@@ -6,7 +6,7 @@ keywords: [UI, UX, VueJS, SASS, Prismic, Figma, Github, Netlify]
 thumbnail:
   src: /img/works/la-fabrique/featured.jpg
   alt: Image issue site de La Fabrique
-layout: ../../layouts/WorkLayout.astro
+layout: ../../layouts/Article.astro
 ---
 
 Lors du projet tutoré de ma deuxième année de DUT MMI, j'ai été en charge de la création du site de La Fabrique, le service jeunesse de la ville de Blois.
