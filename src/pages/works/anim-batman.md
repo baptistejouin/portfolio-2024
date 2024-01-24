@@ -11,9 +11,9 @@ layout: ../../layouts/Article.astro
 
 <div class="img-grid">
 
-![Page d'accueil du site](../../assets/anim-batman/03.jpg)
+![Page d'accueil du site](../../assets/works/anim-batman/03.jpg)
 
-![Page d'accueil du site](../../assets/anim-batman/04.jpg)
+![Page d'accueil du site](../../assets/works/anim-batman/04.jpg)
 
 </div>
 
@@ -23,9 +23,9 @@ Je me suis occupé de certaines animations, et du storyboard.
 
 <div class="img-grid">
 
-![Page d'accueil du site](../../assets/anim-batman/01.jpg)
+![Page d'accueil du site](../../assets/works/anim-batman/01.jpg)
 
-![Page d'accueil du site](../../assets/anim-batman/02.jpg)
+![Page d'accueil du site](../../assets/works/anim-batman/02.jpg)
 
 </div>
 

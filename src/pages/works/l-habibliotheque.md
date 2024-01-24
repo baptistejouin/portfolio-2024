@@ -13,13 +13,13 @@ L’habibliothèque est un projet universitaire. Nous devions concevoir un logo 
 
 <div class="img-grid">
 
-![Page d'accueil du site](../../assets/l-habibliotheque/01.jpg)
+![Page d'accueil du site](../../assets/works/l-habibliotheque/01.jpg)
 
-![Page d'accueil du site](../../assets/l-habibliotheque/02.jpg)
+![Page d'accueil du site](../../assets/works/l-habibliotheque/02.jpg)
 
-![Page d'accueil du site](../../assets/l-habibliotheque/03.jpg)
+![Page d'accueil du site](../../assets/works/l-habibliotheque/03.jpg)
 
-![Page d'accueil du site](../../assets/l-habibliotheque/04.jpg)
+![Page d'accueil du site](../../assets/works/l-habibliotheque/04.jpg)
 
 </div>
 
@@ -27,8 +27,8 @@ Ce travail a été réalisé en plusieurs étapes : tout d’abord une phase de 
 
 <div class="img-grid">
 
-![Page d'accueil du site](../../assets/l-habibliotheque/05.jpg)
+![Page d'accueil du site](../../assets/works/l-habibliotheque/05.jpg)
 
-![Page d'accueil du site](../../assets/l-habibliotheque/06.jpg)
+![Page d'accueil du site](../../assets/works/l-habibliotheque/06.jpg)
 
 </div>

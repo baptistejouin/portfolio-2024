@@ -15,13 +15,13 @@ J'ai choisi de représenté une place de village dans une ambiance méditerrané
 
 <div class="img-grid">
 
-![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/animation-3D/02.png)
+![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/works/animation-3D/02.png)
 
-![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/animation-3D/03.png)
+![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/works/animation-3D/03.png)
 
-![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/animation-3D/01.png)
+![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/works/animation-3D/01.png)
 
-![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/animation-3D/04.png)
+![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/works/animation-3D/04.png)
 
 </div>
 

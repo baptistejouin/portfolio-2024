@@ -9,7 +9,7 @@ thumbnail:
 layout: ../../layouts/Article.astro
 ---
 
-![Image de la page d'accueil du site de La Fabrique](../../assets/la-fabrique/04.jpg)
+![Image de la page d'accueil du site de La Fabrique](../../assets/works/la-fabrique/04.jpg)
 
 Lors du projet tutoré de ma deuxième année de DUT MMI, j'ai été en charge de la création du site de La Fabrique, le service jeunesse de la ville de Blois.
 
@@ -19,13 +19,13 @@ Après avoir évalué les besoins du client, j'ai réalisé une maquette sur Fig
 
 <div class="img-grid">
 
-![Image de la page d'accueil du site de La Fabrique](../../assets/la-fabrique/01.jpg)
+![Image de la page d'accueil du site de La Fabrique](../../assets/works/la-fabrique/01.jpg)
 
-![Image de la page d'accueil du site de La Fabrique](../../assets/la-fabrique/03.jpg)
+![Image de la page d'accueil du site de La Fabrique](../../assets/works/la-fabrique/03.jpg)
 
-![Image de la page d'accueil du site de La Fabrique](../../assets/la-fabrique/02.jpg)
+![Image de la page d'accueil du site de La Fabrique](../../assets/works/la-fabrique/02.jpg)
 
-![Image de la page d'accueil du site de La Fabrique](../../assets/la-fabrique/06.jpg)
+![Image de la page d'accueil du site de La Fabrique](../../assets/works/la-fabrique/06.jpg)
 
 </div>
 

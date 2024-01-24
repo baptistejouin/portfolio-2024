@@ -15,9 +15,9 @@ Le site est disponible à l'adresse suivante : [https://simple-eshop-vuejs.netli
 
 <div class="img-grid">
 
-![Page d'accueil du site](../../assets/apc-web/01.jpg)
+![Page d'accueil du site](../../assets/works/apc-web/01.jpg)
 
-![Page produit du site](../../assets/apc-web/02.jpg)
+![Page produit du site](../../assets/works/apc-web/02.jpg)
 
 </div>
 

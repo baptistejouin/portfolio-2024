@@ -15,13 +15,13 @@ Le lien du site : [https://grill-st-jean.fr/](https://grill-st-jean.fr/)
 
 <div class="img-grid">
 
-![Image issue de la maquette du site du grill saint jean à Troyes](../../assets/grill-st-jean/01.png)
+![Image issue de la maquette du site du grill saint jean à Troyes](../../assets/works/grill-st-jean/01.png)
 
-![Image issue de la maquette du site du grill saint jean à Troyes](../../assets/grill-st-jean/02.png)
+![Image issue de la maquette du site du grill saint jean à Troyes](../../assets/works/grill-st-jean/02.png)
 
-![Image issue de la maquette du site du grill saint jean à Troyes](../../assets/grill-st-jean/03.png)
+![Image issue de la maquette du site du grill saint jean à Troyes](../../assets/works/grill-st-jean/03.png)
 
-![Image issue de la maquette du site du grill saint jean à Troyes](../../assets/grill-st-jean/04.png)
+![Image issue de la maquette du site du grill saint jean à Troyes](../../assets/works/grill-st-jean/04.png)
 
 </div>
 
