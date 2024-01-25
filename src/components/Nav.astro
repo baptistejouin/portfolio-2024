@@ -28,7 +28,12 @@ const { currentPage } = Astro.props;
       <Link href="/labs" active={currentPage === "labs"}>Labs</Link>
     </div>
     <div class="icons">
-      <a href="https://www.linkedin.com/in/baptistejouin/" target="_blank">
+      <a
+        href="https://www.linkedin.com/in/baptistejouin/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="36"
@@ -41,7 +46,7 @@ const { currentPage } = Astro.props;
           ></path>
         </svg></a
       >
-      <button class="moon">
+      <button class="moon" aria-label="Toggle Dark Mode">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"
@@ -58,7 +63,7 @@ const { currentPage } = Astro.props;
           ></svg
         >
       </button>
-      <button class="sun">
+      <button class="sun" aria-label="Toggle Light Mode">
         <svg
           width="32"
           height="32"
