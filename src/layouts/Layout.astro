@@ -32,13 +32,5 @@ const { title, page } = Astro.props;
     <Nav currentPage={page} />
     <slot />
     <Footer />
-    <script lang="ts">
-      import { setup } from "@service/prefersColorScheme.ts";
-
-      setup();
-      document.addEventListener("astro:after-swap", () => {
-        setup();
-      });
-    </script>
   </body>
 </html>

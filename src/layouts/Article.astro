@@ -41,160 +41,151 @@ const { frontmatter } = Astro.props;
     </div>
     <Footer />
     <StarShape side="left" />
-
-    <style lang="scss" is:global>
-      @use "@lib/scss/variables" as v;
-      @use "@lib/scss/mixins" as m;
-
-      .article {
-        a {
-          text-decoration: underline wavy;
-          text-decoration-thickness: 0.1rem;
-          text-decoration-skip-ink: none;
-          color: v.$c-accent;
-
-          &hover {
-          }
-        }
-
-        .wrapper {
-          grid-column: 3 / span v.$number-grid-columns - 4;
-
-          @include m.before(lg) {
-            grid-column: 2 / span v.$number-grid-columns - 2;
-          }
-
-          @include m.before(sm) {
-            grid-column: 1 / span v.$number-grid-columns;
-          }
-        }
-
-        h1,
-        h2,
-        h3 {
-          font-family: v.$ff-jetbrains;
-          font-weight: 700;
-        }
-
-        h1 {
-          font-size: 4rem;
-
-          @include m.before(lg) {
-            font-size: 3rem;
-          }
-          @include m.before(md) {
-            font-size: 2.5rem;
-          }
-        }
-
-        h2 {
-          font-size: 3rem;
-
-          @include m.before(lg) {
-            font-size: 2.25rem;
-          }
-          @include m.before(md) {
-            font-size: 1.75rem;
-          }
-        }
-
-        h3 {
-          font-size: 2.5rem;
-
-          @include m.before(lg) {
-            font-size: 2rem;
-          }
-          @include m.before(md) {
-            font-size: 1.5rem;
-          }
-        }
-
-        .keywords {
-          grid-column: span v.$number-grid-columns;
-          font-family: v.$ff-jetbrains;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem;
-          margin-bottom: 3.5rem;
-
-          span {
-            color: v.$c-accent;
-            font-size: 1.25rem;
-          }
-        }
-
-        iframe {
-          width: 100%;
-          aspect-ratio: 16 / 9;
-        }
-        .text-center {
-          text-align: center;
-        }
-
-        .mh-400 {
-          p img {
-            max-height: 400px;
-            width: auto;
-          }
-        }
-
-        img,
-        iframe {
-          border: 1px solid v.$c-black;
-        }
-
-        img,
-        iframe,
-        .img-grid {
-          margin-block: 2rem;
-        }
-
-        p,
-        li {
-          font-size: 1.6rem;
-          margin-bottom: 1.5rem;
-
-          @include m.before(lg) {
-            font-size: 1.5em;
-          }
-
-          @include m.before(md) {
-            font-size: 1.25rem;
-          }
-        }
-
-        .img-grid {
-          max-width: 100%;
-          gap: v.$grid-columns-gap;
-          display: grid;
-          grid-auto-rows: min-content;
-          grid-template-columns: repeat(v.$number-grid-columns, 1fr);
-
-          p {
-            margin: 0;
-            grid-column: span 6;
-
-            @include m.before(md) {
-              grid-column: span 12;
-            }
-          }
-
-          img {
-            margin: 0;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-      }
-    </style>
-
-    <script lang="ts">
-      import { setup } from "@services/prefersColorScheme";
-
-      setup();
-      document.addEventListener("astro:after-swap", () => {
-        setup();
-      });
-    </script>
   </body>
 </html>
+
+<style lang="scss" is:global>
+  @use "@lib/scss/variables" as v;
+  @use "@lib/scss/mixins" as m;
+
+  .article {
+    a {
+      text-decoration: underline wavy;
+      text-decoration-thickness: 0.1rem;
+      text-decoration-skip-ink: none;
+      color: v.$c-accent;
+
+      &hover {
+      }
+    }
+
+    .wrapper {
+      grid-column: 3 / span v.$number-grid-columns - 4;
+
+      @include m.before(lg) {
+        grid-column: 2 / span v.$number-grid-columns - 2;
+      }
+
+      @include m.before(sm) {
+        grid-column: 1 / span v.$number-grid-columns;
+      }
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: v.$ff-jetbrains;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 4rem;
+
+      @include m.before(lg) {
+        font-size: 3rem;
+      }
+      @include m.before(md) {
+        font-size: 2.5rem;
+      }
+    }
+
+    h2 {
+      font-size: 3rem;
+
+      @include m.before(lg) {
+        font-size: 2.25rem;
+      }
+      @include m.before(md) {
+        font-size: 1.75rem;
+      }
+    }
+
+    h3 {
+      font-size: 2.5rem;
+
+      @include m.before(lg) {
+        font-size: 2rem;
+      }
+      @include m.before(md) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .keywords {
+      grid-column: span v.$number-grid-columns;
+      font-family: v.$ff-jetbrains;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+
+      span {
+        color: v.$c-accent;
+        font-size: 1.25rem;
+      }
+    }
+
+    iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+    .text-center {
+      text-align: center;
+    }
+
+    .mh-400 {
+      p img {
+        max-height: 400px;
+        width: auto;
+      }
+    }
+
+    img,
+    iframe {
+      border: 1px solid v.$c-black;
+    }
+
+    img,
+    iframe,
+    .img-grid {
+      margin-block: 2rem;
+    }
+
+    p,
+    li {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+
+      @include m.before(lg) {
+        font-size: 1.5em;
+      }
+
+      @include m.before(md) {
+        font-size: 1.25rem;
+      }
+    }
+
+    .img-grid {
+      max-width: 100%;
+      gap: v.$grid-columns-gap;
+      display: grid;
+      grid-auto-rows: min-content;
+      grid-template-columns: repeat(v.$number-grid-columns, 1fr);
+
+      p {
+        margin: 0;
+        grid-column: span 6;
+
+        @include m.before(md) {
+          grid-column: span 12;
+        }
+      }
+
+      img {
+        margin: 0;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+</style>

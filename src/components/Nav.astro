@@ -167,7 +167,7 @@ const { currentPage } = Astro.props;
 
     a {
       font-size: 3rem;
-      color: v.$c-white;
+      color: #fff;
       text-decoration: none;
       text-transform: uppercase;
       font-family: v.$ff-jetbrains;
@@ -203,6 +203,19 @@ const { currentPage } = Astro.props;
 </style>
 
 <script>
+  function initAutoTheme() {
+    const html = document.querySelector("html");
+
+    if (
+      sessionStorage.getItem("theme") === "dark" ||
+      (!("theme" in sessionStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      html.classList.add("dark");
+      sessionStorage.setItem("theme", "dark");
+    }
+  }
+
   function initMobileNav() {
     const links = document.querySelector(".links.mobile");
     const nav = document.querySelector(".nav.mobile");
@@ -231,20 +244,22 @@ const { currentPage } = Astro.props;
 
     moon.addEventListener("click", () => {
       html.classList.remove("dark");
-      localStorage.removeItem("theme");
+      sessionStorage.setItem("theme", "light");
     });
 
     sun.addEventListener("click", () => {
       html.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+      sessionStorage.setItem("theme", "dark");
     });
   }
 
   initMobileNav();
   inittoggleTheme();
+  initAutoTheme();
 
   document.addEventListener("astro:after-swap", () => {
     inittoggleTheme();
     initMobileNav();
+    initAutoTheme();
   });
 </script>
