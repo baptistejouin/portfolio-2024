@@ -24,3 +24,7 @@ Il me permet de créer facilement des pages de projet à partir du `layout` que 
 Grâce à Netlify, le site est déployé automatiquement à chaque commit sur la branche `main` depuis mon dépôt Github.
 
 J'ai ainsi pu créer mon site web en quelques jours, sa maintenance est très simple, son déploiement automatique, tout en restant très performant pour le référencement.
+
+J'ai également apporté une attention particulière à l'accessibilité du site, ainsi qu'à la propreté du code et des bonnes pratiques. Ce qui m'a permis d'obtenir un très bon score Lighthouse.
+
+![Image du site](../../assets/works/webfolio-2024/03.png)
