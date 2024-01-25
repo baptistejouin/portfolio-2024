@@ -73,11 +73,20 @@
     @include m.before(lg) {
       font-size: 2rem;
     }
+
+    @include m.before(sm) {
+      font-size: 1.25rem;
+    }
   }
 
   svg {
     fill: v.$c-accent;
-    aspect-ratio: 1;
+    // aspect-ratio: 1;
+
+    @include m.before(lg) {
+      width: 2.3rem;
+      height: 2.5rem;
+    }
   }
 
   .links {
