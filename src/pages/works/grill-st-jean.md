@@ -1,6 +1,6 @@
 ---
-title: Grill St Jean
-description: Création d'un site pour un restauran à Troyes, le Grill St Jean.
+title: Restaurant
+description: Création d'un site pour un restaurant à Troyes, le Grill St Jean.
 category: web
 keywords: [PHP, HTML5, SASS Figma]
 thumbnail:
@@ -19,6 +19,6 @@ Le lien du site : [https://grill-st-jean.fr/](https://grill-st-jean.fr/)
 
 ![Image issue de la maquette du site du grill saint jean à Troyes](../../assets/works/grill-st-jean/03.png)
 
-Nous avons evalué les besoins du client et nous avons réalisé une maquette sur Figma. Nous avons ensuite réalisé le site en PHP avec Sass. Utilisation de Git pour le versionning et la collaboration.
+Nous avons évalué les besoins du client et nous avons réalisé une maquette sur Figma. Nous avons ensuite réalisé le site en PHP avec Sass. Utilisation de Git pour le versioning et la collaboration.
 
 ![Image issue de la maquette du site du grill saint jean à Troyes](../../assets/works/grill-st-jean/04.png)

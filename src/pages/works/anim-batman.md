@@ -13,7 +13,7 @@ layout: ../../layouts/Article.astro
 
 Batman 2D est un projet réalisé lors de ma première année à l'IMAC. Nous devions, par groupe, créer une animation 2D avec After Effects. Nous avons choisi de réaliser une animation sur le thème de Batman.
 
-Je me suis occupé de certaines animations, et du storyboard.
+Je me suis occupé de certaines animations et du storyboard.
 
 <div class="img-grid">
 

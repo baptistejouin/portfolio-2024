@@ -11,9 +11,9 @@ layout: ../../layouts/Article.astro
 
 ![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/works/animation-3d/03.png)
 
-En quatrième semestre de l'IMAC, nous avons eu un cours d'animation 3D. Nous avons utilisé le logiciel Blender pour réaliser une animation de 4 secondes. Nous devions imaginer, modéliaser et animer une scène, le thème de cette année était "La dualité".
+Au quatrième semestre de l'IMAC, nous avons suivi un cours d'animation 3D. Nous avons utilisé le logiciel Blender pour réaliser une animation de 4 secondes. Nous devions imaginer, modéliser et animer une scène ; le thème de cette année était "La dualité".
 
-J'ai choisi de représenté une place de village dans une ambiance méditerranéenne.
+J'ai choisi de représenter une place de village dans une ambiance méditerranéenne.
 
 ![Image issue du projet 3D du semestre 3 de l'IMAC](../../assets/works/animation-3d/01.png)
 

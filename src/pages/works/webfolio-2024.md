@@ -1,17 +1,17 @@
 ---
 title: Webfolio 2024
-description:
+description: Site web personnel créé en 2024, refait avec le framework Astro, déployé sur Netlify.
 category: web
 keywords: [UI, UX, Astro, SASS, Markdown, Figma, Github, Netlify]
 thumbnail:
   src: /img/works/webfolio-2024/featured.png
-  alt:
+  alt: Image représentative du site
 layout: ../../layouts/Article.astro
 ---
 
 ![Image du site](../../assets/works/webfolio-2024/01.png)
 
-Fin 2023 j'ai décidé de refaire mon site web. J'ai donc commencé à réfléchir à la structure du site, et à son design. J'ai commencé par faire une maquette sur Figma, puis j'ai commencé à coder le site.
+Fin 2023, j'ai décidé de refaire mon site web. J'ai donc commencé à réfléchir à la structure du site et à son design. J'ai commencé par créer une maquette sur Figma, puis j'ai entamé le codage du site.
 
 J'ai choisi d'utiliser Astro, un framework SSG (Static Site Generator). Il permet de générer un site web statique à partir de fichiers Astro, un langage similaire à JSX, et de fichiers Markdown. Il permet également de scinder le code en composants, et de les réutiliser.
 
@@ -19,8 +19,8 @@ J'ai choisi d'utiliser Astro, un framework SSG (Static Site Generator). Il perme
 
 Il supporte également SASS, TypeScript, et bien d'autres fonctionnalités.
 
-Il me permet de pouvoir créer des pages de projet facilement, à partir du `layout` que j'ai créé. Il me suffit de créer un fichier Markdown, et de le placer dans le dossier `src/pages/works/`. Le site est ensuite généré automatiquement.
+Il me permet de créer facilement des pages de projet à partir du `layout` que j'ai créé. Il me suffit de créer un fichier Markdown et de le placer dans le dossier `src/pages/works/`. Le site est ensuite généré automatiquement.
 
 Grâce à Netlify, le site est déployé automatiquement à chaque commit sur la branche `main` depuis mon dépôt Github.
 
-J'ai ainsi pu créer mon site web en quelques jours, sa maintenance est très simple, son deployment automatique, tout en restant très performant pour le référencement.
+J'ai ainsi pu créer mon site web en quelques jours, sa maintenance est très simple, son déploiement automatique, tout en restant très performant pour le référencement.

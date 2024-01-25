@@ -1,6 +1,6 @@
 ---
-title: L'habibliothèque
-description: Création de la maquette d'un site ecommerce pour une boutique de vêtements
+title: L'Habibliothèque
+description: Création de la maquette d'un site e-commerce pour une boutique de vêtements
 category: web
 keywords: [UI, UX, Web Design, Figma]
 thumbnail:
@@ -11,7 +11,7 @@ layout: ../../layouts/Article.astro
 
 ![Page d'accueil du site](../../assets/works/l-habibliotheque/01.jpg)
 
-L’habibliothèque est un projet universitaire. Nous devions concevoir un logo ainsi qu’une maquette d’un magasin fictif.
+L’Habibliothèque est un projet universitaire. Nous devions concevoir un logo ainsi qu’une maquette d’un magasin fictif.
 
 ![Page d'accueil du site](../../assets/works/l-habibliotheque/02.jpg)
 
