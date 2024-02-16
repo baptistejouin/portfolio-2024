@@ -24,7 +24,7 @@ const worksEntries = await getCollection("works");
     {
       worksEntries.map((work) => (
         <Card
-          to={`work/${work.slug}`}
+          to={`/work/${work.slug}`}
           category={work.data.category}
           title={work.data.title}
           thumbnail={work.data.thumbnail}

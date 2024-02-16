@@ -14,7 +14,7 @@ const labsEntries = await getCollection("labs");
     {
       labsEntries.map((lab) => (
         <Card
-          to={`lab/${lab.slug}`}
+          to={`/lab/${lab.slug}`}
           category={lab.data.category}
           title={lab.data.title}
           thumbnail={lab.data.thumbnail}
