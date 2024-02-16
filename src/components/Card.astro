@@ -1,26 +1,26 @@
 ---
-import { Picture } from "astro:assets";
+import { Picture, type AstroAssets } from "astro:assets";
 
 interface Astro {
   props: {
     title: string;
     category: string;
     to: string;
-    img: {
-      src: string;
+    thumbnail: {
+      image: AstroAssets;
       alt: string;
     };
   };
 }
 
-const { to, img, title, category } = Astro.props;
+const { to, thumbnail, title, category } = Astro.props;
 ---
 
 <a href={to} data-category={category}>
   <h2>{title}</h2>
   <Picture
-    src={img.src}
-    alt={img.alt ?? `an image`}
+    src={thumbnail.image}
+    alt={thumbnail.alt ?? `an image`}
     formats={["avif", "webp"]}
     width={800}
     height={800}

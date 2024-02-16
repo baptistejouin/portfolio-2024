@@ -1,21 +1,23 @@
 ---
+import { getCollection } from "astro:content";
+
 import Card from "@components/Card.astro";
 import StarShape from "@components/StarShape.astro";
 import Layout from "@layouts/Layout.astro";
 
-const labs = await Astro.glob("../pages/labs/*.md");
+const labsEntries = await getCollection("labs");
 ---
 
 <Layout title="baptistejouin | my work." page="labs">
   <main class="row">
     <h1>/labs</h1>
     {
-      labs.map((work) => (
+      labsEntries.map((lab) => (
         <Card
-          to={work.url}
-          category={work.frontmatter.category}
-          title={work.frontmatter.title}
-          img={work.frontmatter.thumbnail}
+          to={`lab/${lab.slug}`}
+          category={lab.data.category}
+          title={lab.data.title}
+          thumbnail={lab.data.thumbnail}
         />
       ))
     }

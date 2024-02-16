@@ -1,29 +1,33 @@
 ---
+import { getCollection } from "astro:content";
+import { categories } from "src/content/config";
+
 import Card from "@components/Card.astro";
 import StarShape from "@components/StarShape.astro";
 import Layout from "@layouts/Layout.astro";
 
-const works = await Astro.glob("../pages/works/*.md");
+const worksEntries = await getCollection("works");
 ---
 
 <Layout title="baptistejouin | my work." page="works">
   <main class="row">
     <h1>/works</h1>
     <div class="filter">
-      <button class="active" data-category="0">All</button>
-      <button data-category="3d">3D</button>
-      <button data-category="web">Web</button>
-      <button data-category="design">Graphic Design</button>
-      <button data-category="dev">Development</button>
+      <button class="active" data-category="0">all</button>
+      {
+        categories.map((category) => (
+          <button data-category={category}>{category}</button>
+        ))
+      }
     </div>
 
     {
-      works.map((work) => (
+      worksEntries.map((work) => (
         <Card
-          to={work.url}
-          category={work.frontmatter.category}
-          title={work.frontmatter.title}
-          img={work.frontmatter.thumbnail}
+          to={`work/${work.slug}`}
+          category={work.data.category}
+          title={work.data.title}
+          thumbnail={work.data.thumbnail}
         />
       ))
     }
@@ -80,8 +84,6 @@ const works = await Astro.glob("../pages/works/*.md");
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    document.querySelector("h1").textContent = location.pathname;
-
     const filters = document.querySelectorAll("div.filter button");
     const cards = document.querySelectorAll(
       "main > a"

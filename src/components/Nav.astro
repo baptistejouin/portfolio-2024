@@ -2,10 +2,10 @@
 import Link from "@components/Link.astro";
 
 interface Props {
-  currentPage: string;
+  currentPage?: string;
 }
 
-const { currentPage } = Astro.props;
+const { currentPage = "" } = Astro.props;
 ---
 
 <header class="row">
