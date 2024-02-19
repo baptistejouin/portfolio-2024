@@ -9,8 +9,6 @@ thumbnail:
   alt: Rendu d'un export fait avec BeReal Export
 ---
 
-![Rendu d'un export fait avec BeReal Export](./images/bereal-export/01.png)
-
 - [Le projet GitHub](https://github.com/baptistejouin/bereal-export)
 
 BeReal Export est un outil que j'ai développé pendant mes pauses pendant l'été 2023.
@@ -23,7 +21,7 @@ L'application ne propose pas d'exporter toutes les photos simultanément ; il fa
 
 Il m'a donc fallu télécharger les photos à partir de leurs URL, les redimensionner et les placer dans une présentation identique à celle de l'application. Pour cela, j'ai utilisé la bibliothèque Pillow.
 
-![Rendu d'un export fait avec BeReal Export](./images/bereal-export/02.png)
+![Rendu d'un export fait avec BeReal Export](./images/bereal-export/01.png)
 
 Je souhaitais par la suite les imprimer et les mettre dans un album photo, donc respecter le format (10 cm x 15 cm). Je souhaitais également qu'une feuille de papier photo contienne 2 BeReal, donc 4 photos.
 

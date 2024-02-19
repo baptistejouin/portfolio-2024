@@ -9,8 +9,6 @@ thumbnail:
   alt: Image issue de la page d'accueil du site
 ---
 
-![Rendu de la page d'accueil du site](./images/explore-my-spotify/01.png)
-
 "Explore My Spotify" est une application web que j'ai développée pendant mon temps libre. Étant un grand utilisateur de Spotify et fan de musique en général, j'ai eu envie de créer une petite application avec l'API publique de Spotify. [Voir le site](https://explore-my-spotify.netlify.app/)
 
 Cette application web permet de visualiser les musiques que j'écoute en direct.

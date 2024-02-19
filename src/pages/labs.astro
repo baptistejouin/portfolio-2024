@@ -10,11 +10,12 @@ const labsEntries = await getCollection("labs");
 
 <Layout title="baptistejouin | my work." page="labs">
   <main class="row">
-    <h1>/labs</h1>
+    <h1 transition:name="title">/labs</h1>
     {
       labsEntries.map((lab) => (
         <Card
           to={`/lab/${lab.slug}`}
+          id={lab.slug}
           category={lab.data.category}
           title={lab.data.title}
           thumbnail={lab.data.thumbnail}

@@ -11,7 +11,7 @@ const worksEntries = await getCollection("works");
 
 <Layout title="baptistejouin | my work." page="works">
   <main class="row">
-    <h1>/works</h1>
+    <h1 transition:name="title">/works</h1>
     <div class="filter">
       <button class="active" data-category="0">all</button>
       {
@@ -25,6 +25,7 @@ const worksEntries = await getCollection("works");
       worksEntries.map((work) => (
         <Card
           to={`/work/${work.slug}`}
+          id={work.slug}
           category={work.data.category}
           title={work.data.title}
           thumbnail={work.data.thumbnail}
@@ -83,35 +84,41 @@ const worksEntries = await getCollection("works");
 </style>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const filters = document.querySelectorAll("div.filter button");
+  function initFiltersByCategory() {
+    const filters = document.querySelectorAll(
+      "div.filter button"
+    ) as NodeListOf<HTMLButtonElement>;
     const cards = document.querySelectorAll(
       "main > a"
-    ) as NodeListOf<HTMLElement>;
+    ) as NodeListOf<HTMLAnchorElement>;
+    const empty = document.querySelector("p.empty")!;
 
-    filters.forEach((filter: HTMLButtonElement) => {
+    filters.forEach((filter) => {
       filter.addEventListener("click", () => {
-        filters.forEach((filter) => filter.classList.remove("active"));
+        filters.forEach((f) => f.classList.remove("active"));
         filter.classList.add("active");
 
-        const category = filter?.dataset.category;
+        const category = filter.dataset.category;
 
         cards.forEach((card) => {
-          if (category === "0") {
+          if (category === "0" || card.dataset.category === category) {
             card.classList.remove("hidden");
-          } else if (card?.dataset?.category !== category) {
-            card.classList.add("hidden");
           } else {
-            card.classList.remove("hidden");
+            card.classList.add("hidden");
           }
         });
 
-        if (!document.querySelector("main > a:not(.hidden)")) {
-          document.querySelector("p.empty").classList.remove("hidden");
-        } else {
-          document.querySelector("p.empty").classList.add("hidden");
-        }
+        empty.classList.toggle(
+          "hidden",
+          !!document.querySelector("main > a:not(.hidden)")
+        );
       });
     });
+  }
+
+  initFiltersByCategory();
+
+  document.addEventListener("astro:after-swap", () => {
+    initFiltersByCategory();
   });
 </script>

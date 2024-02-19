@@ -9,8 +9,6 @@ thumbnail:
   alt: Image issue de la maquette du site
 ---
 
-![Image du site](./images/imacook/01.png)
-
 IMACOOK est un projet réalisé en groupe de 4 personnes dans le cadre de notre formation à l'IMAC. Nous devions créer une API en Python avec Flask et un site web en Vue.js qui utilise cette API.
 
 Nous avons choisi de créer un site de recettes de cuisine basé sur la collaboration des étudiants de l'IMAC.

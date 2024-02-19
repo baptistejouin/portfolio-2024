@@ -9,8 +9,6 @@ thumbnail:
   alt: Image issue du site de La Fabrique
 ---
 
-![Image de la page d'accueil du site de La Fabrique](./images/la-fabrique/04.jpg)
-
 Lors du projet tutoré de ma deuxième année de DUT MMI, j'ai été chargé de la création du site de La Fabrique, le service jeunesse de la ville de Blois.
 
 - [https://la-fabrique.netlify.app/](https://la-fabrique.netlify.app/)
@@ -19,7 +17,7 @@ Après avoir évalué les besoins du client, j'ai réalisé une maquette sur Fig
 
 <div class="img-grid">
 
-![Image de la page d'accueil du site de La Fabrique](./images/la-fabrique/01.jpg)
+![Image de la page d'accueil du site de La Fabrique](./images/la-fabrique/04.jpg)
 
 ![Image de la page d'accueil du site de La Fabrique](./images/la-fabrique/03.jpg)
 

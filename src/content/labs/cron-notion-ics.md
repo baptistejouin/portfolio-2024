@@ -9,8 +9,6 @@ thumbnail:
   alt: Image issue du calendrier Notion synchronisé avec Google Agenda
 ---
 
-![Image issue du calendrier Notion synchronisé avec Google Agenda](./images/cron-notion-ics/02.png)
-
 Ce projet est issu d'un besoin personnel. Je souhaitais pouvoir synchroniser mon calendrier Notion avec mon calendrier Google. Des solutions similaires existent déjà, mais sont payantes ou limitées par rapport à mon besoin. J'ai donc décidé de développer ma propre solution.
 
 [Voici le lien vers le projet](https://github.com/baptistejouin/cron-notion-ics)

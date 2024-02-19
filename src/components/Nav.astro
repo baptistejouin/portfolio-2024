@@ -209,12 +209,12 @@ const { currentPage = "" } = Astro.props;
 </style>
 
 <script>
-  function initAutoTheme() {
-    const html = document.querySelector("html");
+  function setDarkMode() {
+    const html = document.documentElement;
 
     if (
       sessionStorage.getItem("theme") === "dark" ||
-      (!("theme" in sessionStorage) &&
+      (!sessionStorage.getItem("theme") &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       html.classList.add("dark");
@@ -222,19 +222,21 @@ const { currentPage = "" } = Astro.props;
     }
   }
 
-  function initMobileNav() {
-    const links = document.querySelector(".links.mobile");
-    const nav = document.querySelector(".nav.mobile");
-    const html = document.querySelector("html");
+  function toggleMobileNav() {
+    const links = document.querySelector(".links.mobile")!;
+    const nav = document.querySelector(".nav.mobile")!;
+    const html = document.documentElement;
 
     links.addEventListener("click", () => {
+      console.log("click");
       nav.classList.toggle("active");
-      html.classList.add("no-scroll");
+      html.classList.toggle("no-scroll");
+    });
 
-      addEventListener("resize", () => {
-        html.classList.remove("no-scroll");
-        nav.classList.remove("active");
-      });
+    document.removeEventListener("resize", () => {});
+    document.addEventListener("resize", () => {
+      html.classList.remove("no-scroll");
+      nav.classList.remove("active");
     });
 
     nav.addEventListener("click", () => {
@@ -243,10 +245,10 @@ const { currentPage = "" } = Astro.props;
     });
   }
 
-  function inittoggleTheme() {
-    const moon = document.querySelector("nav button.moon");
-    const sun = document.querySelector("nav button.sun");
-    const html = document.querySelector("html");
+  function toggleTheme() {
+    const moon = document.querySelector("nav button.moon")!;
+    const sun = document.querySelector("nav button.sun")!;
+    const html = document.documentElement;
 
     moon.addEventListener("click", () => {
       html.classList.remove("dark");
@@ -259,13 +261,13 @@ const { currentPage = "" } = Astro.props;
     });
   }
 
-  initMobileNav();
-  inittoggleTheme();
-  initAutoTheme();
+  toggleMobileNav();
+  toggleTheme();
+  setDarkMode();
 
   document.addEventListener("astro:after-swap", () => {
-    inittoggleTheme();
-    initMobileNav();
-    initAutoTheme();
+    toggleMobileNav();
+    toggleTheme();
+    setDarkMode();
   });
 </script>

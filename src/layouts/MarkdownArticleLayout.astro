@@ -1,16 +1,17 @@
 ---
+import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title=`baptistejouin | ${entry.data.title}.`>
+<Layout title={`baptistejouin | ${entry.data.title}.`} page={entry}>
   <div class="article">
     <main class="row">
       <div class="wrapper">
         <div class="header">
-          <h1 class="title">{`/${entry.slug}`}</h1>
+          <h1 class="title" transition:name="title">{`/${entry.slug}`}</h1>
           <div class="info">
             <p class="tags">
               {entry.data.tags.map((tag) => <span>*{tag}</span>)}
@@ -20,191 +21,202 @@ const { Content } = await entry.render();
             </p>
           </div>
         </div>
+        <Picture
+          transition:name={`${entry.slug}-image`}
+          src={entry.data.thumbnail.image}
+          alt={entry.data.thumbnail.alt ?? `an image`}
+          formats={["avif", "webp"]}
+          width={800}
+          height={800}
+          widths={[400, 800]}
+          sizes="(max-width: 800px) 100vw, 800px"
+        />
         <Content />
       </div>
     </main>
   </div>
-</Layout>
 
-<style lang="scss">
-  @use "@lib/scss/variables" as v;
-  @use "@lib/scss/mixins" as m;
+  <style lang="scss">
+    @use "@lib/scss/variables" as v;
+    @use "@lib/scss/mixins" as m;
 
-  .wrapper {
-    grid-column: 3 / span v.$number-grid-columns - 4;
-
-    @include m.before(lg) {
-      grid-column: 2 / span v.$number-grid-columns - 2;
-    }
-
-    @include m.before(sm) {
-      grid-column: 1 / span v.$number-grid-columns;
-    }
-
-    .header {
-      display: flex;
-      flex-direction: column;
-      margin-block: 3rem 3.5rem;
-
-      @include m.before(md) {
-        gap: 1rem;
-      }
-    }
-
-    .title {
-      margin-top: 0;
-      word-break: break-all;
-    }
-
-    .info {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-
-      @include m.after(md) {
-        flex-direction: row;
-        gap: 2rem;
-      }
-    }
-
-    .tags {
-      grid-column: span v.$number-grid-columns;
-      font-family: v.$ff-jetbrains;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      color: v.$c-accent;
-      font-size: 1.25rem;
-      margin-bottom: 0;
-    }
-
-    .date {
-      font-family: v.$ff-jetbrains;
-      margin-bottom: 0;
-      font-size: 1.25rem;
-
-      &::before {
-        content: "->";
-      }
-    }
-  }
-</style>
-
-<style lang="scss" is:global>
-  // RELATIVE TO AUTO-GENERATED MARKDOWN FROM ASTRO
-
-  @use "@lib/scss/variables" as v;
-  @use "@lib/scss/mixins" as m;
-
-  .article {
-    a {
-      text-decoration: underline wavy;
-      text-decoration-thickness: 0.1rem;
-      text-decoration-skip-ink: none;
-      color: v.$c-accent;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: v.$ff-jetbrains;
-      font-weight: 700;
-    }
-
-    h1 {
-      font-size: 4rem;
+    .wrapper {
+      grid-column: 3 / span v.$number-grid-columns - 4;
 
       @include m.before(lg) {
-        font-size: 3rem;
-      }
-      @include m.before(md) {
-        font-size: 2.5rem;
-      }
-    }
-
-    h2 {
-      font-size: 3rem;
-
-      @include m.before(lg) {
-        font-size: 2.25rem;
-      }
-      @include m.before(md) {
-        font-size: 1.75rem;
-      }
-    }
-
-    h3 {
-      font-size: 2.5rem;
-
-      @include m.before(lg) {
-        font-size: 2rem;
-      }
-      @include m.before(md) {
-        font-size: 1.5rem;
-      }
-    }
-
-    iframe {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-    }
-    .text-center {
-      text-align: center;
-    }
-
-    .mh-400 {
-      p img {
-        max-height: 400px;
-        width: auto;
-      }
-    }
-
-    img,
-    iframe {
-      border: 1px solid v.$c-black;
-    }
-
-    img,
-    iframe,
-    .img-grid {
-      margin-block: 2rem;
-    }
-
-    p,
-    li {
-      font-size: 1.6rem;
-      margin-bottom: 1.5rem;
-
-      @include m.before(lg) {
-        font-size: 1.5em;
+        grid-column: 2 / span v.$number-grid-columns - 2;
       }
 
-      @include m.before(md) {
-        font-size: 1.25rem;
+      @include m.before(sm) {
+        grid-column: 1 / span v.$number-grid-columns;
       }
-    }
 
-    .img-grid {
-      max-width: 100%;
-      gap: v.$grid-columns-gap;
-      display: grid;
-      grid-auto-rows: min-content;
-      grid-template-columns: repeat(v.$number-grid-columns, 1fr);
-
-      p {
-        margin: 0;
-        grid-column: span 6;
+      .header {
+        display: flex;
+        flex-direction: column;
+        margin-block: 3rem 3.5rem;
 
         @include m.before(md) {
-          grid-column: span 12;
+          gap: 1rem;
         }
       }
 
-      img {
-        margin: 0;
-        height: 100%;
-        object-fit: cover;
+      .title {
+        margin-top: 0;
+        word-break: break-all;
+        font-weight: normal;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        @include m.after(md) {
+          flex-direction: row;
+          gap: 2rem;
+        }
+      }
+
+      .tags {
+        grid-column: span v.$number-grid-columns;
+        font-family: v.$ff-jetbrains;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        color: v.$c-accent;
+        font-size: 1.5rem;
+        margin-bottom: 0;
+      }
+
+      .date {
+        font-family: v.$ff-jetbrains;
+        margin-bottom: 0;
+        font-size: 1.25rem;
+
+        &::before {
+          content: "->";
+        }
       }
     }
-  }
-</style>
+  </style>
+
+  <style lang="scss" is:global>
+    // RELATIVE TO AUTO-GENERATED MARKDOWN FROM ASTRO
+
+    @use "@lib/scss/variables" as v;
+    @use "@lib/scss/mixins" as m;
+
+    .article {
+      a {
+        text-decoration: underline wavy;
+        text-decoration-thickness: 0.1rem;
+        text-decoration-skip-ink: none;
+        color: v.$c-accent;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: v.$ff-jetbrains;
+        font-weight: 700;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+
+        @include m.before(lg) {
+          font-size: 3rem;
+        }
+        @include m.before(md) {
+          font-size: 2.5rem;
+        }
+      }
+
+      h2 {
+        font-size: 3rem;
+
+        @include m.before(lg) {
+          font-size: 2.25rem;
+        }
+        @include m.before(md) {
+          font-size: 1.75rem;
+        }
+      }
+
+      h3 {
+        font-size: 2.5rem;
+
+        @include m.before(lg) {
+          font-size: 2rem;
+        }
+        @include m.before(md) {
+          font-size: 1.5rem;
+        }
+      }
+
+      iframe {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+      }
+      .text-center {
+        text-align: center;
+      }
+
+      .mh-400 {
+        p img {
+          max-height: 400px;
+          width: auto;
+        }
+      }
+
+      img,
+      iframe {
+        border: 1px solid v.$c-black;
+      }
+
+      img,
+      iframe,
+      .img-grid {
+        margin-block: 2rem;
+      }
+
+      p,
+      li {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+
+        @include m.before(lg) {
+          font-size: 1.5em;
+        }
+
+        @include m.before(md) {
+          font-size: 1.25rem;
+        }
+      }
+
+      .img-grid {
+        max-width: 100%;
+        gap: v.$grid-columns-gap;
+        display: grid;
+        grid-auto-rows: min-content;
+        grid-template-columns: repeat(v.$number-grid-columns, 1fr);
+
+        p {
+          margin: 0;
+          grid-column: span 6;
+
+          @include m.before(md) {
+            grid-column: span 12;
+          }
+        }
+
+        img {
+          margin: 0;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  </style>
+</Layout>

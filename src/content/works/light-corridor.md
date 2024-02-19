@@ -9,8 +9,6 @@ thumbnail:
   alt: Image du jeu
 ---
 
-![Image du jeu](./images/light-corridor/01.png)
-
 Le Light Corridor IMAC est un projet réalisé dans le cadre de notre formation à l'IMAC. Nous devions créer un remake du jeu The Light Corridor, sorti en 1990 sur Amiga, en C++ avec OpenGL.
 
 Nous devions concevoir un menu principal, un menu de pause et un menu de fin de partie.

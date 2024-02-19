@@ -9,8 +9,6 @@ thumbnail:
   alt: Image de la page d'accueil du site
 ---
 
-![Page d'accueil du site](./images/l-habibliotheque/01.jpg)
-
 L’Habibliothèque est un projet universitaire. Nous devions concevoir un logo ainsi qu’une maquette d’un magasin fictif.
 
 ![Page d'accueil du site](./images/l-habibliotheque/02.jpg)

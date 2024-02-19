@@ -2,14 +2,12 @@
 title: APC Web
 description: Création d'un site e-commerce fictif avec Vue.js
 category: web
-tags: [Vue.js, JavaScript, Figma, Github]
+tags: [vue.js, javaScript, figma, github]
 date: 2022-02-13
 thumbnail:
   image: ./images/apc-web/01.jpg
   alt: Page d'accueil du site
 ---
-
-![Page d'accueil du site](./images/apc-web/01.jpg)
 
 Afin de mettre en pratique mes connaissances en Vue.js, j'ai décidé de créer un site e-commerce fictif. J'ai choisi de créer un site pour la marque de vêtements APC, car j'aime beaucoup leur univers et leur site actuel est assez minimaliste, ce qui est parfait pour un premier projet.
 
