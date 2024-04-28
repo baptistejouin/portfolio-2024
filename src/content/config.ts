@@ -1,6 +1,6 @@
 import { z, defineCollection } from 'astro:content';
 
-export const categories = ['web', 'software', '3d', 'design', 'other'] as const;
+export const categories = ['web', 'software', '3d', 'graphic', 'other'] as const;
 
 const customSchema = ({ image }) => z.object({
 	title: z.string(),
