@@ -3,7 +3,7 @@ title: Webfolio 2024
 description: Site web personnel créé en 2024, refait avec le framework Astro, déployé sur Netlify.
 category: web
 tags: [UI, UX, Astro, SASS, Markdown, Figma, Github, Netlify]
-date: 2024-10-01
+date: 2024-01-10
 thumbnail:
   image: ./images/webfolio-2024/01.png
   alt: Image représentative du site

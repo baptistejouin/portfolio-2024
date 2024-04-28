@@ -5,7 +5,13 @@ import Card from "@components/Card.astro";
 import StarShape from "@components/StarShape.astro";
 import Layout from "@layouts/Layout.astro";
 
-const labsEntries = await getCollection("labs");
+const labsEntries = await getCollection("labs").then((collection) =>
+  collection.sort((a, b) => {
+    const dateA = new Date(a.data.date);
+    const dateB = new Date(b.data.date);
+    return dateB.getTime() - dateA.getTime();
+  })
+);
 ---
 
 <Layout title="baptistejouin | my work." page="labs">
