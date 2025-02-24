@@ -6,22 +6,81 @@
 html {
   --grid-columns-gap: 16px;
   --page-gutter: 85px;
-  --accent-color: #aaa0f8;
-  --accent-background-color: #f8f8ff;
-  --dark: #000;
-  --light: #fff;
+  --number-grid-columns: 12;
+
+  --accent-50: hsl(247, 86%, 97%);
+  --accent-100: hsl(247, 86%, 95%);
+  --accent-200: hsl(247, 86%, 90%);
+  --accent-300: hsl(247, 86%, 85%);
+  --accent-400: hsl(247, 86%, 80%);
+  --accent-500: hsl(247, 86%, 70%);
+  --accent-600: hsl(247, 86%, 60%);
+  --accent-700: hsl(247, 86%, 50%);
+  --accent-800: hsl(247, 86%, 40%);
+  --accent-900: hsl(247, 86%, 30%);
+
+  --dark-50: hsl(247, 30%, 40%);
+  --dark-100: hsl(247, 30%, 35%);
+  --dark-200: hsl(247, 30%, 30%);
+  --dark-300: hsl(247, 30%, 25%);
+  --dark-400: hsl(247, 30%, 20%);
+  --dark-500: hsl(247, 30%, 15%);
+  --dark-600: hsl(247, 30%, 12%);
+  --dark-700: hsl(247, 30%, 9%);
+  --dark-800: hsl(247, 30%, 6%);
+  --dark-900: hsl(247, 30%, 3%);
+
+  --light-50: hsl(247, 30%, 99%);
+  --light-100: hsl(247, 30%, 97%);
+  --light-200: hsl(247, 30%, 95%);
+  --light-300: hsl(247, 30%, 92%);
+  --light-400: hsl(247, 30%, 88%);
+  --light-500: hsl(247, 30%, 84%);
+  --light-600: hsl(247, 30%, 80%);
+  --light-700: hsl(247, 30%, 75%);
+  --light-800: hsl(247, 30%, 70%);
+  --light-900: hsl(247, 30%, 65%);
 
   font-family: system-ui, sans-serif;
-  font-size: v.$fs-base;
-  color: v.$c-black;
-  background-color: v.$c-accent-background;
+  font-size: 16;
+  color: var(--dark-900);
+  background-color: var(--light-100);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   &.dark {
-    --dark: #fff;
-    --light: #000;
-    --accent-background-color: #181723;
+    --accent-50: hsl(247, 86%, 10%);
+    --accent-100: hsl(247, 86%, 15%);
+    --accent-200: hsl(247, 86%, 20%);
+    --accent-300: hsl(247, 86%, 25%);
+    // --accent-400: hsl(247, 86%, 30%);
+    --accent-500: hsl(247, 86%, 40%);
+    --accent-600: hsl(247, 86%, 50%);
+    --accent-700: hsl(247, 86%, 60%);
+    --accent-800: hsl(247, 86%, 70%);
+    --accent-900: hsl(247, 86%, 80%);
+
+    --light-900: hsl(247, 30%, 40%);
+    --light-800: hsl(247, 30%, 35%);
+    --light-700: hsl(247, 30%, 30%);
+    --light-600: hsl(247, 30%, 25%);
+    --light-500: hsl(247, 30%, 20%);
+    --light-400: hsl(247, 30%, 15%);
+    --light-300: hsl(247, 30%, 12%);
+    --light-200: hsl(247, 30%, 9%);
+    --light-100: hsl(247, 30%, 6%);
+    --light-50: hsl(247, 30%, 3%);
+
+    --dark-900: hsl(247, 30%, 99%);
+    --dark-800: hsl(247, 30%, 97%);
+    --dark-700: hsl(247, 30%, 95%);
+    --dark-600: hsl(247, 30%, 92%);
+    --dark-500: hsl(247, 30%, 88%);
+    --dark-400: hsl(247, 30%, 84%);
+    --dark-300: hsl(247, 30%, 80%);
+    --dark-200: hsl(247, 30%, 75%);
+    --dark-100: hsl(247, 30%, 70%);
+    --dark-50: hsl(247, 30%, 65%);
   }
 }
 body {
@@ -54,8 +113,8 @@ h1 {
   margin-top: 5rem;
   margin-bottom: 0rem;
   font-family: v.$ff-inter;
-  color: v.$c-black;
-  grid-column: span v.$number-grid-columns;
+  color: var(--dark-900);
+  grid-column: span var(--number-grid-columns);
 
   @include m.before(xl) {
     font-size: 3rem;
@@ -70,8 +129,8 @@ iframe {
 code {
   font-family: v.$ff-jetbrains;
   font-size: 0.9rem;
-  background-color: rgba(#aaa0f8, 0.15);
-  color: v.$c-accent;
+  background-color: var(--light-200);
+  color: var(--accent-400);
   font-weight: 700;
   padding: 0.2rem 0.4rem;
   border-radius: 5px;
@@ -79,14 +138,22 @@ code {
 .row {
   margin: 0 auto;
   max-width: 1366px;
-  gap: v.$grid-columns-gap;
+  gap: var(--grid-columns-gap);
   display: grid;
   grid-auto-rows: min-content;
-  grid-template-columns: repeat(v.$number-grid-columns, 1fr);
-  padding: 0 v.$page-gutter;
+  grid-template-columns: repeat(var(--number-grid-columns), 1fr);
+  padding: 0 var(--page-gutter);
 
   @include m.before(xl) {
-    padding: 0 2rem;
+    --page-gutter: 2rem;
+  }
+
+  @include m.before(lg) {
+    --page-gutter: 1.5rem;
+  }
+
+  @include m.before(md) {
+    --page-gutter: 1rem;
   }
 }
 .underline {

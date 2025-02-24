@@ -31,7 +31,7 @@ const { offsetX = 0, offsetY = 0, scale = 1, side } = Astro.props;
   @use "../lib/scss/variables" as v;
 
   svg {
-    fill: v.$c-accent;
+    fill: var(--accent-400);
     width: 40vw;
     position: absolute;
     z-index: -1;

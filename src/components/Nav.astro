@@ -88,13 +88,13 @@ const { currentPage = "" } = Astro.props;
   nav {
     font-size: 1.125rem;
     font-family: v.$ff-jetbrains;
-    grid-column: 2 / span v.$number-grid-columns - 2;
+    grid-column: 2 / span calc(var(--number-grid-columns) - 2);
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     @include m.before(sm) {
-      grid-column: 1 / span v.$number-grid-columns;
+      grid-column: 1 / span var(--number-grid-columns);
     }
   }
   .links {
@@ -127,24 +127,25 @@ const { currentPage = "" } = Astro.props;
   svg {
     aspect-ratio: 1;
     height: 2rem;
-    fill: v.$c-accent;
+    fill: var(--accent-400);
   }
   button.links {
     font-family: inherit;
     font-size: inherit;
     width: fit-content;
     display: inline-flex;
+    box-sizing: border-box;
     padding: 0.875rem 1.75rem;
     justify-content: center;
     align-items: center;
-    gap: 1.125rem;
-    border-radius: 1rem;
-    color: v.$c-black;
-    border: 2px solid v.$c-black;
-    background: v.$c-white;
+    border-radius: 5px;
+    outline: 2px solid var(--light-300);
+    color: var(--dark-900);
+    background: var(--light-200);
 
-    &:hover {
-      background: v.$c-accent;
+    &.active,
+    &:hover:not(.active) {
+      outline-color: var(--light-400);
     }
   }
   .nav.mobile {
@@ -173,7 +174,7 @@ const { currentPage = "" } = Astro.props;
 
     a {
       font-size: 3rem;
-      color: #fff;
+      color: white;
       text-decoration: none;
       text-transform: uppercase;
       font-family: v.$ff-jetbrains;
@@ -182,11 +183,11 @@ const { currentPage = "" } = Astro.props;
       transition: color 0.2s ease-in-out;
 
       &:hover {
-        color: v.$c-accent;
+        color: var(--accent-400);
       }
 
       &.active {
-        color: v.$c-accent;
+        color: var(--accent-400);
         text-decoration: underline wavy;
       }
     }

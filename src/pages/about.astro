@@ -50,7 +50,7 @@ import Layout from "@layouts/Layout.astro";
     display: flex;
     flex-direction: column;
     align-items: center;
-    grid-column: span v.$number-grid-columns;
+    grid-column: span var(--number-grid-columns);
     min-height: 60vh;
   }
 
@@ -65,14 +65,14 @@ import Layout from "@layouts/Layout.astro";
       }
     }
     svg {
-      fill: v.$c-black;
+      fill: var(--dark-900);
     }
   }
 
   p {
     font-family: v.$ff-inter;
     font-size: 2.8125rem;
-    color: v.$c-black;
+    color: var(--dark-900);
 
     @include m.before(lg) {
       font-size: 2.5rem;

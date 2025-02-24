@@ -1,6 +1,6 @@
 ---
-import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
+import { Picture } from "astro:assets";
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
@@ -14,7 +14,7 @@ const { Content } = await entry.render();
           <h1 class="title" transition:name="title">{`/${entry.slug}`}</h1>
           <div class="info">
             <p class="tags">
-              {entry.data.tags.map((tag) => <span>*{tag}</span>)}
+              {entry.data.tags.map((tag: string) => <span>*{tag}</span>)}
             </p>
             <p class="date">
               {new Date(entry.data.date).toLocaleDateString("fr-FR")}
@@ -28,8 +28,8 @@ const { Content } = await entry.render();
           formats={["avif", "webp"]}
           width={800}
           height={800}
-          widths={[400, 800, 1500]}
-          sizes="(max-width: 800px) 400px, (max-width: 1500px) 800px, 1500px"
+          widths={[400, 800, 1000, 1200]}
+          sizes="(max-width: 800px) 400px, (max-width: 1000px) 800px, (max-width: 1200px) 1000px, 1200px"
         />
         <Content />
       </div>
@@ -41,20 +41,19 @@ const { Content } = await entry.render();
     @use "@lib/scss/mixins" as m;
 
     .wrapper {
-      grid-column: 3 / span v.$number-grid-columns - 4;
+      grid-column: span var(--number-grid-columns);
 
-      @include m.before(lg) {
-        grid-column: 2 / span v.$number-grid-columns - 2;
-      }
-
-      @include m.before(sm) {
-        grid-column: 1 / span v.$number-grid-columns;
-      }
+      gap: var(--grid-columns-gap);
+      display: grid;
+      grid-auto-rows: min-content;
+      grid-template-columns: repeat(6, 1fr);
+      padding: 0 var(--page-gutter);
 
       .header {
         display: flex;
         flex-direction: column;
         margin-block: 3rem 3.5rem;
+        grid-column: span 6;
 
         @include m.before(md) {
           gap: 1rem;
@@ -65,6 +64,11 @@ const { Content } = await entry.render();
         margin-top: 0;
         word-break: break-all;
         font-weight: normal;
+      }
+
+      img {
+        margin-top: 0;
+        width: 100%;
       }
 
       .info {
@@ -79,12 +83,11 @@ const { Content } = await entry.render();
       }
 
       .tags {
-        grid-column: span v.$number-grid-columns;
         font-family: v.$ff-jetbrains;
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
-        color: v.$c-accent;
+        color: var(--accent-400);
         font-size: 1.5rem;
         margin-bottom: 0;
       }
@@ -107,12 +110,27 @@ const { Content } = await entry.render();
     @use "@lib/scss/variables" as v;
     @use "@lib/scss/mixins" as m;
 
+    .wrapper > * {
+      grid-column: 2 / span 4;
+
+      @include m.before(md) {
+        grid-column: span 6;
+      }
+
+      &:is(picture),
+      &:has(> img:first-child),
+      &:is(iframe),
+      &:is(.img-grid) {
+        grid-column: 1 / span 6;
+      }
+    }
+
     .article {
       a {
         text-decoration: underline wavy;
         text-decoration-thickness: 0.1rem;
         text-decoration-skip-ink: none;
-        color: v.$c-accent;
+        color: var(--accent-400);
       }
 
       h1,
@@ -172,7 +190,7 @@ const { Content } = await entry.render();
 
       img,
       iframe {
-        border: 1px solid v.$c-black;
+        border: 1px solid var(--dark-900);
       }
 
       img,
@@ -197,10 +215,10 @@ const { Content } = await entry.render();
 
       .img-grid {
         max-width: 100%;
-        gap: v.$grid-columns-gap;
+        gap: var(--grid-columns-gap);
         display: grid;
         grid-auto-rows: min-content;
-        grid-template-columns: repeat(v.$number-grid-columns, 1fr);
+        grid-template-columns: repeat(var(--number-grid-columns), 1fr);
 
         p {
           margin: 0;
