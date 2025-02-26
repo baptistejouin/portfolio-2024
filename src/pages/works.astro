@@ -19,10 +19,10 @@ const worksEntries = await getCollection("works").then((collection) =>
   <main class="row">
     <h1 transition:name="title">/works</h1>
     <div class="filter">
-      <button class="active" data-category="0">all</button>
+      <button class="active" data-category="0">/all</button>
       {
         categories.map((category) => (
-          <button data-category={category}>{category}</button>
+          <button data-category={category}>/{category}</button>
         ))
       }
     </div>
@@ -63,7 +63,7 @@ const worksEntries = await getCollection("works").then((collection) =>
     margin-bottom: 3.5rem;
 
     button {
-      color: var(--dark-900);
+      color: var(--light-700);
       font-size: 1.5rem;
       font-family: v.$ff-jetbrains;
 
@@ -72,7 +72,7 @@ const worksEntries = await getCollection("works").then((collection) =>
       }
 
       &.active {
-        text-decoration: underline;
+        color: var(--dark-900);
       }
     }
   }
