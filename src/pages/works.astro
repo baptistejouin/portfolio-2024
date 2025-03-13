@@ -15,30 +15,32 @@ const worksEntries = await getCollection("works").then((collection) =>
 );
 ---
 
-<Layout title="baptistejouin | my work." page="works">
+<Layout title="baptistejouin | my works" page="works">
   <main class="row">
-    <h1 transition:name="title">/works</h1>
-    <div class="filter">
-      <button class="active" data-category="0">/all</button>
+    <div class="wrapper">
+      <h1 transition:name="title">my works</h1>
+      <div class="filter">
+        <button class="active" data-category="0">all</button>
+        {
+          categories.map((category) => (
+            <button data-category={category}>{category}</button>
+          ))
+        }
+      </div>
+
       {
-        categories.map((category) => (
-          <button data-category={category}>/{category}</button>
+        worksEntries.map((work) => (
+          <Card
+            to={`/work/${work.slug}`}
+            id={work.slug}
+            category={work.data.category}
+            title={work.data.title}
+            thumbnail={work.data.thumbnail}
+          />
         ))
       }
+      <p class="empty hidden">There is no work for this category. :(</p>
     </div>
-
-    {
-      worksEntries.map((work) => (
-        <Card
-          to={`/work/${work.slug}`}
-          id={work.slug}
-          category={work.data.category}
-          title={work.data.title}
-          thumbnail={work.data.thumbnail}
-        />
-      ))
-    }
-    <p class="empty hidden">There is no work for this category. :(</p>
   </main>
   <StarShape offsetY={200} scale={0.6} side="left" />
 </Layout>
@@ -51,7 +53,7 @@ const worksEntries = await getCollection("works").then((collection) =>
     font-family: v.$ff-jetbrains;
   }
   main {
-    min-height: 80vh;
+    min-height: 80svh;
   }
   .filter {
     grid-column: span var(--number-grid-columns);
@@ -73,6 +75,10 @@ const worksEntries = await getCollection("works").then((collection) =>
 
       &.active {
         color: var(--dark-900);
+
+        &:before {
+          content: "#";
+        }
       }
     }
   }
@@ -107,10 +113,14 @@ const worksEntries = await getCollection("works").then((collection) =>
         const category = filter.dataset.category;
 
         cards.forEach((card) => {
-          if (category === "0" || card.dataset.category === category) {
+          if (card.dataset.category === category) {
             card.classList.remove("hidden");
-          } else {
+            history.pushState(null, "", `/works#${category}`);
+          } else if (category !== "0") {
             card.classList.add("hidden");
+          } else {
+            card.classList.remove("hidden");
+            history.pushState(null, "", "/works");
           }
         });
 

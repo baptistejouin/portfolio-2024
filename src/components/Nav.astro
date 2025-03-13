@@ -1,31 +1,45 @@
 ---
-import Link from "@components/Link.astro";
-
 interface Props {
   currentPage?: string;
 }
 
 const { currentPage = "" } = Astro.props;
+
+const navLinks = [
+  { href: "/works", label: "works" },
+  { href: "/about", label: "about" },
+  { href: "/labs", label: "labs" },
+];
 ---
 
 <header class="row">
   <nav>
-    <button class="links mobile">Menu</button>
-    <div class="nav mobile">
+    <button class="menu-toggle" aria-label="Toggle Menu">Links</button>
+    <div class="nav-mobile">
       <div>
-        <a href="/works" class:list={{ active: currentPage === "works" }}
-          >Works</a
-        >
-        <a href="/about" class:list={{ active: currentPage === "about" }}
-          >About</a
-        >
-        <a href="/labs" class:list={{ active: currentPage === "labs" }}>Labs</a>
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={{ active: currentPage === link.label }}
+            >
+              <span>{link.label}</span>
+            </a>
+          ))
+        }
       </div>
     </div>
-    <div class="links desktop">
-      <Link href="/works" active={currentPage === "works"}>Works</Link>
-      <Link href="/about" active={currentPage === "about"}>About</Link>
-      <Link href="/labs" active={currentPage === "labs"}>Labs</Link>
+    <div class="nav-desktop">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={{ active: currentPage === link.label }}
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </div>
     <div class="icons">
       <a
@@ -44,35 +58,40 @@ const { currentPage = "" } = Astro.props;
           <path
             d="M10.41 7.5C10.4096 8.29565 10.0931 9.05855 9.53023 9.62088C8.96734 10.1832 8.20412 10.4989 7.40847 10.4985C6.61282 10.4981 5.84992 10.1816 5.28759 9.61876C4.72526 9.05587 4.40958 8.29265 4.40997 7.497C4.41037 6.70135 4.72682 5.93845 5.28971 5.37612C5.8526 4.81379 6.61582 4.4981 7.41147 4.4985C8.20712 4.4989 8.97003 4.81535 9.53235 5.37824C10.0947 5.94113 10.4104 6.70435 10.41 7.5ZM10.5 12.72H4.49997V31.5H10.5V12.72ZM19.98 12.72H14.01V31.5H19.92V21.645C19.92 16.155 27.075 15.645 27.075 21.645V31.5H33V19.605C33 10.35 22.41 10.695 19.92 15.24L19.98 12.72Z"
           ></path>
-        </svg></a
-      >
-      <button class="moon" aria-label="Toggle Dark Mode">
+        </svg>
+      </a>
+      <button class="theme-toggle" aria-label="Toggle Theme">
+        <!-- Moon icon for light mode -->
         <svg
+          class="moon-icon"
           xmlns="http://www.w3.org/2000/svg"
           width="32"
           height="32"
           fill="none"
-          ><g clip-path="url(#a)"
-            ><path
+        >
+          <g clip-path="url(#a)">
+            <path
               d="M13.333 8a10.666 10.666 0 0 0 15.94 9.275C28.632 24.04 22.933 29.333 16 29.333 8.636 29.333 2.667 23.364 2.667 16c0-6.933 5.293-12.632 12.058-13.273A10.617 10.617 0 0 0 13.333 8Zm-8 8a10.667 10.667 0 0 0 16.032 9.22 10.674 10.674 0 0 0 3.911-3.947c-.421.04-.848.06-1.276.06-7.364 0-13.333-5.969-13.333-13.333 0-.428.02-.853.06-1.276A10.675 10.675 0 0 0 5.333 16ZM24.22 3.055l1.114.278v1.334l-1.114.278a2.667 2.667 0 0 0-1.94 1.94L22 8h-1.333l-.279-1.115a2.665 2.665 0 0 0-1.94-1.94l-1.115-.278V3.333l1.115-.278a2.667 2.667 0 0 0 1.939-1.94L20.667 0H22l.279 1.115a2.666 2.666 0 0 0 1.94 1.94Zm6.666 6.666L32 10v1.333l-1.115.279a2.667 2.667 0 0 0-1.94 1.94l-.278 1.115h-1.334l-.278-1.115a2.667 2.667 0 0 0-1.94-1.94L24 11.333V10l1.115-.279a2.667 2.667 0 0 0 1.94-1.94l.278-1.114h1.334l.278 1.114a2.666 2.666 0 0 0 1.94 1.94Z"
-            ></path></g
-          ><defs
-            ><clipPath id="a"
-              ><path fill="#fff" d="M0 0h32v32H0z"></path></clipPath
-            ></defs
-          ></svg
-        >
-      </button>
-      <button class="sun" aria-label="Toggle Light Mode">
+            ></path>
+          </g>
+          <defs>
+            <clipPath id="a">
+              <path fill="#fff" d="M0 0h32v32H0z"></path>
+            </clipPath>
+          </defs>
+        </svg>
+        <!-- Sun icon for dark mode -->
         <svg
+          class="sun-icon"
           width="32"
           height="32"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          ><path
-            d="M16 24a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm0-2.667a5.333 5.333 0 1 0 0-10.667 5.333 5.333 0 0 0 0 10.667Zm-1.333-20h2.666v4h-2.666v-4Zm0 25.334h2.666v4h-2.666v-4ZM4.687 6.572l1.885-1.885L9.4 7.515 7.515 9.4 4.687 6.572ZM22.6 24.485l1.885-1.885 2.828 2.828-1.885 1.885-2.828-2.828Zm2.828-19.8 1.885 1.887L24.485 9.4 22.6 7.515l2.828-2.828v-.002ZM7.515 22.6 9.4 24.485l-2.828 2.828-1.885-1.885L7.515 22.6Zm23.152-7.933v2.666h-4v-2.666h4Zm-25.334 0v2.666h-4v-2.666h4Z"
-          ></path></svg
         >
+          <path
+            d="M16 24a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm0-2.667a5.333 5.333 0 1 0 0-10.667 5.333 5.333 0 0 0 0 10.667Zm-1.333-20h2.666v4h-2.666v-4Zm0 25.334h2.666v4h-2.666v-4ZM4.687 6.572l1.885-1.885L9.4 7.515 7.515 9.4 4.687 6.572ZM22.6 24.485l1.885-1.885 2.828 2.828-1.885 1.885-2.828-2.828Zm2.828-19.8 1.885 1.887L24.485 9.4 22.6 7.515l2.828-2.828v-.002ZM7.515 22.6 9.4 24.485l-2.828 2.828-1.885-1.885L7.515 22.6Zm23.152-7.933v2.666h-4v-2.666h4Zm-25.334 0v2.666h-4v-2.666h4Z"
+          ></path>
+        </svg>
       </button>
     </div>
   </nav>
@@ -85,70 +104,61 @@ const { currentPage = "" } = Astro.props;
   header {
     padding-top: 3.5rem;
   }
+
   nav {
     font-size: 1.125rem;
     font-family: v.$ff-jetbrains;
-    grid-column: 2 / span calc(var(--number-grid-columns) - 2);
+    grid-column: 1 / span var(--number-grid-columns);
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+    a {
+      color: var(--light-700);
+      font-size: 1.5rem;
+      font-family: v.$ff-jetbrains;
+
+      @include m.before(lg) {
+        font-size: 1.25rem;
+      }
+
+      &.active {
+        color: var(--dark-900);
+
+        &:before {
+          content: "/";
+          display: inline-block;
+        }
+      }
+    }
 
     @include m.before(sm) {
       grid-column: 1 / span var(--number-grid-columns);
     }
   }
-  .links {
+
+  .nav-desktop {
     display: flex;
     align-items: center;
     gap: 1.5rem;
 
-    &.desktop {
-      display: inline-flex;
-
-      @include m.before(md) {
-        display: none;
-      }
-    }
-
-    &.mobile {
+    @include m.before(md) {
       display: none;
-
-      @include m.before(md) {
-        display: inline-flex;
-      }
     }
   }
 
-  .icons {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  svg {
-    aspect-ratio: 1;
-    height: 2rem;
-    fill: var(--accent-400);
-  }
-  button.links {
+  .menu-toggle {
+    display: none;
     font-family: inherit;
+    color: var(--light-700);
     font-size: inherit;
-    width: fit-content;
-    display: inline-flex;
-    box-sizing: border-box;
-    padding: 0.875rem 1.75rem;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    outline: 2px solid var(--light-300);
-    color: var(--dark-900);
-    background: var(--light-200);
 
-    &.active,
-    &:hover:not(.active) {
-      outline-color: var(--light-400);
+    @include m.before(md) {
+      display: inline-flex;
     }
   }
-  .nav.mobile {
+
+  .nav-mobile {
     position: fixed;
     top: 0;
     left: 0;
@@ -165,6 +175,10 @@ const { currentPage = "" } = Astro.props;
     gap: 1.5rem;
     padding: 0 2rem;
 
+    &.active {
+      display: flex;
+    }
+
     div {
       margin-top: -20vh;
       display: flex;
@@ -179,7 +193,7 @@ const { currentPage = "" } = Astro.props;
       text-transform: uppercase;
       font-family: v.$ff-jetbrains;
       font-weight: 700;
-      letter-spacing: 0.1rem;
+      letter-spacing: 0m;
       transition: color 0.2s ease-in-out;
 
       &:hover {
@@ -188,29 +202,40 @@ const { currentPage = "" } = Astro.props;
 
       &.active {
         color: var(--accent-400);
-        text-decoration: underline wavy;
-      }
-    }
-
-    @include m.before(md) {
-      &.active {
-        display: flex;
       }
     }
   }
-  .sun,
-  :global(html.dark) .moon {
-    display: block;
+
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
-  :global(html.dark) .sun,
-  .moon {
+  svg {
+    aspect-ratio: 1;
+    height: 2rem;
+    fill: var(--accent-400);
+  }
+
+  // Theme toggle icons - control visibility via CSS instead of JS
+  .sun-icon {
     display: none;
+  }
+
+  :global(html.dark) {
+    .sun-icon {
+      display: block;
+    }
+
+    .moon-icon {
+      display: none;
+    }
   }
 </style>
 
 <script>
-  function setDarkMode() {
+  function handleTheme() {
     const html = document.documentElement;
 
     if (
@@ -221,54 +246,50 @@ const { currentPage = "" } = Astro.props;
       html.classList.add("dark");
       sessionStorage.setItem("theme", "dark");
     }
+
+    const themeToggle = document.querySelector(".theme-toggle");
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        if (html.classList.contains("dark")) {
+          html.classList.remove("dark");
+          sessionStorage.setItem("theme", "light");
+        } else {
+          html.classList.add("dark");
+          sessionStorage.setItem("theme", "dark");
+        }
+      });
+    }
   }
 
-  function toggleMobileNav() {
-    const links = document.querySelector(".links.mobile")!;
-    const nav = document.querySelector(".nav.mobile")!;
+  function handleMobileNav() {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMobile = document.querySelector(".nav-mobile");
     const html = document.documentElement;
 
-    links.addEventListener("click", () => {
-      console.log("click");
-      nav.classList.toggle("active");
-      html.classList.toggle("no-scroll");
-    });
+    if (menuToggle && navMobile) {
+      menuToggle.addEventListener("click", () => {
+        navMobile.classList.toggle("active");
+        html.classList.toggle("no-scroll");
+      });
 
-    document.removeEventListener("resize", () => {});
-    document.addEventListener("resize", () => {
-      html.classList.remove("no-scroll");
-      nav.classList.remove("active");
-    });
+      navMobile.addEventListener("click", () => {
+        navMobile.classList.remove("active");
+        html.classList.remove("no-scroll");
+      });
 
-    nav.addEventListener("click", () => {
-      html.classList.remove("no-scroll");
-      nav.classList.remove("active");
-    });
+      window.addEventListener("resize", () => {
+        navMobile.classList.remove("active");
+        html.classList.remove("no-scroll");
+      });
+    }
   }
 
-  function toggleTheme() {
-    const moon = document.querySelector("nav button.moon")!;
-    const sun = document.querySelector("nav button.sun")!;
-    const html = document.documentElement;
-
-    moon.addEventListener("click", () => {
-      html.classList.remove("dark");
-      sessionStorage.setItem("theme", "light");
-    });
-
-    sun.addEventListener("click", () => {
-      html.classList.add("dark");
-      sessionStorage.setItem("theme", "dark");
-    });
+  function initNavigation() {
+    handleTheme();
+    handleMobileNav();
   }
 
-  toggleMobileNav();
-  toggleTheme();
-  setDarkMode();
+  initNavigation();
 
-  document.addEventListener("astro:after-swap", () => {
-    toggleMobileNav();
-    toggleTheme();
-    setDarkMode();
-  });
+  document.addEventListener("astro:after-swap", initNavigation);
 </script>

@@ -14,20 +14,22 @@ const labsEntries = await getCollection("labs").then((collection) =>
 );
 ---
 
-<Layout title="baptistejouin | my work." page="labs">
+<Layout title="baptistejouin | my labs" page="labs">
   <main class="row">
-    <h1 transition:name="title">/labs</h1>
-    {
-      labsEntries.map((lab) => (
-        <Card
-          to={`/lab/${lab.slug}`}
-          id={lab.slug}
-          category={lab.data.category}
-          title={lab.data.title}
-          thumbnail={lab.data.thumbnail}
-        />
-      ))
-    }
+    <div class="wrapper">
+      <h1 transition:name="title">my labs</h1>
+      {
+        labsEntries.map((lab) => (
+          <Card
+            to={`/lab/${lab.slug}`}
+            id={lab.slug}
+            category={lab.data.category}
+            title={lab.data.title}
+            thumbnail={lab.data.thumbnail}
+          />
+        ))
+      }
+    </div>
   </main>
   <StarShape offsetY={200} scale={0.6} side="left" />
 </Layout>
@@ -40,7 +42,6 @@ const labsEntries = await getCollection("labs").then((collection) =>
     font-size: 3.5rem;
     font-family: v.$ff-jetbrains;
     margin: 5rem 0 3.5rem 0;
-    width: 100%;
   }
   main {
     min-height: 80vh;

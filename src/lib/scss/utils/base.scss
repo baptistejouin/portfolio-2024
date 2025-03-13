@@ -6,6 +6,7 @@
 html {
   --grid-columns-gap: 16px;
   --page-gutter: 85px;
+  --wrapper-gutter: 48px;
   --number-grid-columns: 12;
 
   --accent-50: hsl(247, 86%, 97%);
@@ -138,22 +139,37 @@ code {
 .row {
   margin: 0 auto;
   max-width: 1366px;
-  gap: var(--grid-columns-gap);
-  display: grid;
-  grid-auto-rows: min-content;
-  grid-template-columns: repeat(var(--number-grid-columns), 1fr);
   padding: 0 var(--page-gutter);
 
   @include m.before(xl) {
-    --page-gutter: 2rem;
+    --page-gutter: 72px;
   }
 
   @include m.before(lg) {
-    --page-gutter: 1.5rem;
+    --page-gutter: 48px;
   }
 
   @include m.before(md) {
-    --page-gutter: 1rem;
+    --page-gutter: 32px;
+  }
+}
+.wrapper {
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-template-columns: repeat(var(--number-grid-columns), 1fr);
+  padding: 0 var(--wrapper-gutter);
+  gap: var(--grid-columns-gap);
+
+  @include m.before(xl) {
+    --wrapper-gutter: 32px;
+  }
+
+  @include m.before(lg) {
+    --wrapper-gutter: 24px;
+  }
+
+  @include m.before(md) {
+    --wrapper-gutter: 16px;
   }
 }
 .underline {

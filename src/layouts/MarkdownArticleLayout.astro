@@ -6,243 +6,231 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={`baptistejouin | ${entry.data.title}.`} page={entry}>
-  <div class="article">
-    <main class="row">
-      <div class="wrapper">
-        <div class="header">
-          <h1 class="title" transition:name="title">{`/${entry.slug}`}</h1>
-          <div class="info">
-            <p class="date">
-              {
-                new Date(entry.data.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                })
-              }
-            </p>
-            <p class="tags">
-              {entry.data.tags.map((tag: string) => <span>{tag}</span>)}
-            </p>
-          </div>
+<Layout title={`baptistejouin | ${entry.data.title}`} page={entry}>
+  <main class="row">
+    <article class="wrapper">
+      <div class="header">
+        <h1 class="title" transition:name="title">{`${entry.slug}`}</h1>
+        <div class="info">
+          <p class="date">
+            {
+              new Date(entry.data.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+              })
+            }
+          </p>
+          <p class="tags">
+            {entry.data.tags.map((tag: string) => <span>{tag}</span>)}
+          </p>
         </div>
-        <Picture
-          transition:name={`${entry.slug}-image`}
-          src={entry.data.thumbnail.image}
-          alt={entry.data.thumbnail.alt ?? `an image`}
-          formats={["avif", "webp"]}
-          width={800}
-          height={800}
-          widths={[400, 800, 1000, 1200]}
-          sizes="(max-width: 800px) 400px, (max-width: 1000px) 800px, (max-width: 1200px) 1000px, 1200px"
-        />
-        <Content />
       </div>
-    </main>
-  </div>
+      <Picture
+        transition:name={`${entry.slug}-image`}
+        src={entry.data.thumbnail.image}
+        alt={entry.data.thumbnail.alt ?? `an image`}
+        formats={["avif", "webp"]}
+        width={800}
+        height={800}
+        widths={[400, 800, 1000, 1200]}
+        sizes="(max-width: 800px) 400px, (max-width: 1000px) 800px, (max-width: 1200px) 1000px, 1200px"
+      />
+      <Content />
+    </article>
+  </main>
+</Layout>
 
-  <style lang="scss">
-    @use "@lib/scss/variables" as v;
-    @use "@lib/scss/mixins" as m;
+<style lang="scss">
+  @use "@lib/scss/variables" as v;
+  @use "@lib/scss/mixins" as m;
 
-    .wrapper {
+  .header {
+    display: flex;
+    flex-direction: column;
+    margin-block-end: 3.5rem;
+    grid-column: span var(--number-grid-columns);
+
+    @include m.before(md) {
+      gap: 1rem;
+    }
+  }
+
+  .title {
+    margin: 5rem 0 3.5rem 0;
+    word-break: break-all;
+    font-weight: normal;
+  }
+
+  img {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .tags {
+    font-family: v.$ff-jetbrains;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+
+    span {
+      color: var(--accent-400);
+      background-color: var(--light-200);
+      border: 2px solid var(--light-300);
+      padding: 0.25em 0.5em;
+      border-radius: 0.25em;
+    }
+  }
+
+  .date {
+    font-family: v.$ff-jetbrains;
+    margin-bottom: 0;
+    font-size: 1.25rem;
+
+    &::before {
+      content: "->";
+    }
+  }
+</style>
+
+<style lang="scss" is:global>
+  // RELATIVE TO AUTO-GENERATED MARKDOWN FROM ASTRO
+
+  @use "@lib/scss/variables" as v;
+  @use "@lib/scss/mixins" as m;
+
+  .wrapper > * {
+    grid-column: 2 / span calc(var(--number-grid-columns) - 2);
+
+    @include m.before(md) {
       grid-column: span var(--number-grid-columns);
+    }
 
+    &:is(picture),
+    &:has(> img:first-child),
+    &:is(iframe),
+    &:is(.img-grid) {
+      grid-column: span var(--number-grid-columns);
+    }
+  }
+
+  article {
+    a {
+      text-decoration: underline wavy;
+      text-decoration-thickness: 0.1rem;
+      text-decoration-skip-ink: none;
+      color: var(--accent-400);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: v.$ff-jetbrains;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+
+      @include m.before(lg) {
+        font-size: 3rem;
+      }
+      @include m.before(md) {
+        font-size: 2.5rem;
+      }
+    }
+
+    h2 {
+      font-size: 3rem;
+
+      @include m.before(lg) {
+        font-size: 2.25rem;
+      }
+      @include m.before(md) {
+        font-size: 1.75rem;
+      }
+    }
+
+    h3 {
+      font-size: 2.5rem;
+
+      @include m.before(lg) {
+        font-size: 2rem;
+      }
+      @include m.before(md) {
+        font-size: 1.5rem;
+      }
+    }
+
+    iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+    .text-center {
+      text-align: center;
+    }
+
+    .mh-400 {
+      p img {
+        max-height: 400px;
+        width: auto;
+      }
+    }
+
+    img,
+    iframe {
+      outline: 2px dashed var(--light-600);
+      outline-offset: 1rem;
+    }
+
+    img,
+    iframe,
+    .img-grid {
+      margin-block: 2rem;
+    }
+
+    p,
+    li {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+
+      @include m.before(lg) {
+        font-size: 1.5em;
+      }
+
+      @include m.before(md) {
+        font-size: 1.25rem;
+      }
+    }
+
+    .img-grid {
+      max-width: 100%;
       gap: var(--grid-columns-gap);
       display: grid;
       grid-auto-rows: min-content;
-      grid-template-columns: repeat(6, 1fr);
-      padding: 0 var(--page-gutter);
+      grid-template-columns: repeat(var(--number-grid-columns), 1fr);
 
-      .header {
-        display: flex;
-        flex-direction: column;
-        margin-block: 3rem 3.5rem;
-        grid-column: span 6;
+      p {
+        margin: 0;
+        grid-column: span var(--number-grid-columns);
 
         @include m.before(md) {
-          gap: 1rem;
+          grid-column: span var(--number-grid-columns);
         }
-      }
-
-      .title {
-        margin-top: 0;
-        word-break: break-all;
-        font-weight: normal;
       }
 
       img {
-        margin-top: 0;
-        width: 100%;
-      }
-
-      .info {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-      }
-
-      .tags {
-        font-family: v.$ff-jetbrains;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        font-size: 0.9rem;
-        margin-bottom: 0;
-
-        span {
-          color: var(--accent-400);
-          background-color: var(--light-200);
-          border: 2px solid var(--light-300);
-          padding: 0.25em 0.5em;
-          border-radius: 0.25em;
-        }
-      }
-
-      .date {
-        font-family: v.$ff-jetbrains;
-        margin-bottom: 0;
-        font-size: 1.25rem;
-
-        &::before {
-          content: "->";
-        }
+        margin: 0;
+        height: 100%;
+        object-fit: cover;
       }
     }
-  </style>
-
-  <style lang="scss" is:global>
-    // RELATIVE TO AUTO-GENERATED MARKDOWN FROM ASTRO
-
-    @use "@lib/scss/variables" as v;
-    @use "@lib/scss/mixins" as m;
-
-    .wrapper > * {
-      grid-column: 2 / span 4;
-
-      @include m.before(md) {
-        grid-column: span 6;
-      }
-
-      &:is(picture),
-      &:has(> img:first-child),
-      &:is(iframe),
-      &:is(.img-grid) {
-        grid-column: 1 / span 6;
-      }
-    }
-
-    .article {
-      a {
-        text-decoration: underline wavy;
-        text-decoration-thickness: 0.1rem;
-        text-decoration-skip-ink: none;
-        color: var(--accent-400);
-      }
-
-      h1,
-      h2,
-      h3 {
-        font-family: v.$ff-jetbrains;
-        font-weight: 700;
-      }
-
-      h1 {
-        font-size: 3.5rem;
-
-        @include m.before(lg) {
-          font-size: 3rem;
-        }
-        @include m.before(md) {
-          font-size: 2.5rem;
-        }
-      }
-
-      h2 {
-        font-size: 3rem;
-
-        @include m.before(lg) {
-          font-size: 2.25rem;
-        }
-        @include m.before(md) {
-          font-size: 1.75rem;
-        }
-      }
-
-      h3 {
-        font-size: 2.5rem;
-
-        @include m.before(lg) {
-          font-size: 2rem;
-        }
-        @include m.before(md) {
-          font-size: 1.5rem;
-        }
-      }
-
-      iframe {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-      }
-      .text-center {
-        text-align: center;
-      }
-
-      .mh-400 {
-        p img {
-          max-height: 400px;
-          width: auto;
-        }
-      }
-
-      img,
-      iframe {
-        outline: 2px dashed var(--light-600);
-        outline-offset: 1rem;
-      }
-
-      img,
-      iframe,
-      .img-grid {
-        margin-block: 2rem;
-      }
-
-      p,
-      li {
-        font-size: 1.6rem;
-        margin-bottom: 1.5rem;
-
-        @include m.before(lg) {
-          font-size: 1.5em;
-        }
-
-        @include m.before(md) {
-          font-size: 1.25rem;
-        }
-      }
-
-      .img-grid {
-        max-width: 100%;
-        gap: var(--grid-columns-gap);
-        display: grid;
-        grid-auto-rows: min-content;
-        grid-template-columns: repeat(var(--number-grid-columns), 1fr);
-
-        p {
-          margin: 0;
-          grid-column: span 6;
-
-          @include m.before(md) {
-            grid-column: span 12;
-          }
-        }
-
-        img {
-          margin: 0;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-    }
-  </style>
-</Layout>
+  }
+</style>

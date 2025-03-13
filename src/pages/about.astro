@@ -4,10 +4,10 @@ import StarShape from "@components/StarShape.astro";
 import Layout from "@layouts/Layout.astro";
 ---
 
-<Layout title="baptistejouin | about me." page="about">
-  <div class="row container">
-    <main>
-      <h1 transition:name="title">/about</h1>
+<Layout title="baptistejouin | about me" page="about">
+  <div class="row">
+    <main class="wrapper">
+      <h1 transition:name="title">about me</h1>
       <p>
         I am currently a student in Paris at <span class="underline"
           ><a href="https://www.ingenieur-imac.fr">IMAC</a></span
@@ -49,9 +49,7 @@ import Layout from "@layouts/Layout.astro";
   main {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    grid-column: span var(--number-grid-columns);
-    min-height: 60vh;
+    min-height: 60svh;
   }
 
   .resume {
