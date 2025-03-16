@@ -219,7 +219,7 @@ const { Content } = await entry.render();
 
       p {
         margin: 0;
-        grid-column: span var(--number-grid-columns);
+        grid-column: span calc(var(--number-grid-columns) / 2);
 
         @include m.before(md) {
           grid-column: span var(--number-grid-columns);

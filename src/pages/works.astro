@@ -101,35 +101,57 @@ const worksEntries = await getCollection("works").then((collection) =>
       "div.filter button"
     ) as NodeListOf<HTMLButtonElement>;
     const cards = document.querySelectorAll(
-      "main > a"
+      "main > div > a"
     ) as NodeListOf<HTMLAnchorElement>;
     const empty = document.querySelector("p.empty")!;
 
+    const applyFilter = (category: string, updateUrl = true) => {
+      // Update active button state
+      filters.forEach((f) => {
+        f.classList.toggle("active", f.dataset.category === category);
+      });
+
+      let hasVisibleCards = false;
+      cards.forEach((card) => {
+        if (category === "0") {
+          card.classList.remove("hidden");
+          hasVisibleCards = true;
+        } else if (card.dataset.category !== category) {
+          card.classList.add("hidden");
+        } else {
+          card.classList.remove("hidden");
+          hasVisibleCards = true;
+        }
+      });
+
+      empty.classList.toggle("hidden", hasVisibleCards);
+
+      if (updateUrl) {
+        if (category === "0") {
+          history.pushState({ category }, "", "/works");
+        } else {
+          history.pushState({ category }, "", "/works#" + category);
+        }
+      }
+    };
+
     filters.forEach((filter) => {
       filter.addEventListener("click", () => {
-        filters.forEach((f) => f.classList.remove("active"));
-        filter.classList.add("active");
-
-        const category = filter.dataset.category;
-
-        cards.forEach((card) => {
-          if (card.dataset.category === category) {
-            card.classList.remove("hidden");
-            history.pushState(null, "", `/works#${category}`);
-          } else if (category !== "0") {
-            card.classList.add("hidden");
-          } else {
-            card.classList.remove("hidden");
-            history.pushState(null, "", "/works");
-          }
-        });
-
-        empty.classList.toggle(
-          "hidden",
-          !!document.querySelector("main > a:not(.hidden)")
-        );
+        const category = filter.dataset.category || "0";
+        applyFilter(category, true);
       });
     });
+
+    window.addEventListener("popstate", () => {
+      const hash = window.location.hash.replace("#", "");
+      const category = hash || "0";
+      applyFilter(category, false);
+    });
+
+    const initialHash = window.location.hash.replace("#", "");
+    if (initialHash) {
+      applyFilter(initialHash, false);
+    }
   }
 
   initFiltersByCategory();
