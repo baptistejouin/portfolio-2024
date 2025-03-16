@@ -22,9 +22,7 @@ const navLinks = [
             <a
               href={link.href}
               class:list={{ active: currentPage === link.label }}
-            >
-              <span>{link.label}</span>
-            </a>
+            >{link.label}</a>
           ))
         }
       </div>
@@ -35,9 +33,7 @@ const navLinks = [
           <a
             href={link.href}
             class:list={{ active: currentPage === link.label }}
-          >
-            {link.label}
-          </a>
+          >{link.label}</a>
         ))
       }
     </div>
@@ -150,7 +146,7 @@ const navLinks = [
   .menu-toggle {
     display: none;
     font-family: inherit;
-    color: var(--light-700);
+    color: var(--dark-700);
     font-size: inherit;
 
     @include m.before(md) {
@@ -218,7 +214,6 @@ const navLinks = [
     fill: var(--accent-400);
   }
 
-  // Theme toggle icons - control visibility via CSS instead of JS
   .sun-icon {
     display: none;
   }
@@ -236,7 +231,9 @@ const navLinks = [
 
 <script>
   function handleTheme() {
+    const themeToggle = document.querySelector(".theme-toggle");
     const html = document.documentElement;
+    const audio = new Audio("/click.mp3");
 
     if (
       sessionStorage.getItem("theme") === "dark" ||
@@ -247,9 +244,10 @@ const navLinks = [
       sessionStorage.setItem("theme", "dark");
     }
 
-    const themeToggle = document.querySelector(".theme-toggle");
     if (themeToggle) {
       themeToggle.addEventListener("click", () => {
+        audio.play();
+
         if (html.classList.contains("dark")) {
           html.classList.remove("dark");
           sessionStorage.setItem("theme", "light");
